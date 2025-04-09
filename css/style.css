@@ -19,7 +19,7 @@
 }
 
 body {
-    font-family: 'VT323', monospace;
+    font-family: 'Roboto', sans-serif;
     background-color: var(--bg-color);
     color: var(--text);
     font-size: 1.25rem;
@@ -31,27 +31,28 @@ body {
 }
 
 h1, h2, h3, h4 {
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Roboto', sans-serif;
     margin-bottom: 1rem;
     line-height: 1.4;
     color: var(--secondary);
     text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+    font-weight: 700;
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: var(--primary);
 }
 
 h2 {
-    font-size: 1.5rem;
+    font-size: 2rem;
     border-bottom: 4px solid var(--primary);
     padding-bottom: 0.5rem;
     margin-bottom: 2rem;
 }
 
 h3 {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     color: var(--accent);
 }
 
@@ -77,8 +78,9 @@ h3 {
 }
 
 .logo {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 1.2rem;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
     color: var(--light-accent);
     text-decoration: none;
     display: flex;
@@ -105,8 +107,9 @@ h3 {
 .nav-links a {
     color: var(--text);
     text-decoration: none;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 0.9rem;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
     transition: color 0.3s ease;
     position: relative;
     padding: 0.5rem;
@@ -199,8 +202,9 @@ section {
     background-color: var(--primary);
     color: var(--text);
     text-decoration: none;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 0.9rem;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
     border: none;
     position: relative;
     cursor: pointer;
@@ -312,8 +316,9 @@ section {
 }
 
 .social-label {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 0.7rem;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
     opacity: 0.8;
     transition: opacity 0.3s ease;
 }
@@ -352,11 +357,11 @@ footer::before {
 /* Responsive Design */
 @media screen and (max-width: 768px) {
     h1 {
-        font-size: 1.5rem;
+        font-size: 2rem;
     }
     
     h2 {
-        font-size: 1.2rem;
+        font-size: 1.6rem;
     }
     
     .burger {
@@ -439,8 +444,9 @@ footer::before {
     color: var(--dark);
     padding: 0.5rem 0;
     border-radius: 4px;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 0.75rem;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
     text-align: center;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
@@ -487,7 +493,7 @@ footer::before {
 .skill-description {
     display: none;
     color: var(--text);
-    font-family: 'VT323', monospace;
+    font-family: 'Roboto', sans-serif;
     font-size: 1.1rem;
     line-height: 1.5;
 }
