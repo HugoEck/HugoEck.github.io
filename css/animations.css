@@ -1,0 +1,175 @@
+/* Animations */
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.slide-up {
+    animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Modal animations */
+.modal {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.modal.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Glitch effect for text */
+.glitch-text {
+    position: relative;
+    animation: glitch 5s infinite;
+}
+
+@keyframes glitch {
+    0%, 80%, 100% {
+        transform: none;
+        opacity: 1;
+    }
+    91% {
+        transform: translate(-2px, 0);
+        color: var(--primary);
+        opacity: 0.8;
+    }
+    92% {
+        transform: translate(2px, -2px);
+        color: var(--accent);
+    }
+    93% {
+        transform: translate(0, 2px);
+        color: var(--secondary);
+    }
+    94% {
+        transform: translate(-2px, -2px);
+        color: var(--light-accent);
+    }
+    95% {
+        transform: translate(2px, 2px);
+        color: var(--primary);
+    }
+    96% {
+        transform: none;
+    }
+}
+
+/* Typewriter effect */
+.typewriter {
+    overflow: hidden;
+    border-right: 0.15em solid var(--accent);
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: 0.15em;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--accent); }
+}
+
+/* Skill tag animations */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 231, 86, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(0, 231, 86, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 231, 86, 0);
+    }
+}
+
+.skill-btn.active {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.skill-description.active {
+    animation: appear 0.3s forwards;
+}
+
+/* Floating animation for hero pixels */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+    }
+    25% {
+        transform: translateY(-10px) translateX(5px);
+    }
+    50% {
+        transform: translateY(0) translateX(10px);
+    }
+    75% {
+        transform: translateY(10px) translateX(5px);
+    }
+}
+
+/* Shine effect animation */
+@keyframes shine {
+    0% {
+        background-position: -200% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
+}
+
+.skill-btn.active {
+    background-image: linear-gradient(
+        90deg,
+        var(--accent) 0%,
+        var(--secondary) 50%,
+        var(--accent) 100%
+    );
+    background-size: 200% auto;
+    animation: shine 3s linear infinite;
+}
