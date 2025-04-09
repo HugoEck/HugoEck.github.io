@@ -1,15 +1,15 @@
 /* Main Styles */
 
 :root {
-    /* Retro gaming color palette */
-    --bg-color: #40318d;       /* Blue-purple */
-    --primary: #7c70da;        /* Light violet */
-    --secondary: #8275d3;      /* Lavender */
-    --accent: #bfcc72;         /* Yellow-green */
-    --text: #ffffff;           /* White */
-    --dark: #211b4d;           /* Dark blue */
-    --medium: #53529d;         /* Medium blue-violet */
-    --light-accent: #ffff99;   /* Light yellow */
+    /*color palette */
+    --bg-color: #333333;       /* Dark gray background (or choose another color) */
+    --primary: #f08f75;        /* Coral/salmon as primary color */
+    --secondary: #d67d65;      /* Slightly darker shade of coral */
+    --accent: #b9f075;         /* Lime green as accent color */
+    --text: #ffffff;           /* Keep white text */
+    --dark: #222222;           /* Dark background (or choose another color) */
+    --medium: #555555;         /* Medium shade (or choose another color) */
+    --light-accent: #cff58c;   /* Lighter shade of the lime green */
 }
 
 * {
