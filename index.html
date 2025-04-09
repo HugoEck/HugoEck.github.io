@@ -6,6 +6,7 @@
     <title>Your Name - Game Developer Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Properly organized CSS references -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/animations.css">
@@ -15,23 +16,23 @@
 <body>
     <!-- Hero animation script -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const heroSection = document.querySelector('.hero');
-            
+
             // Create floating pixels in the hero section
             for (let i = 0; i < 150; i++) {
                 const pixel = document.createElement('div');
                 pixel.className = 'hero-pixel';
-                
+
                 pixel.style.left = `${Math.random() * 100}%`;
                 pixel.style.top = `${Math.random() * 100}%`;
-                
+
                 const size = 3 + Math.random() * 8;
                 pixel.style.width = `${size}px`;
                 pixel.style.height = `${size}px`;
-                
+
                 pixel.style.animationDelay = `${Math.random() * 5}s`;
-                
+
                 heroSection.appendChild(pixel);
             }
         });
@@ -57,7 +58,7 @@
             </div>
         </nav>
     </header>
-    
+
     <!-- Hero Section: The main banner at the top -->
     <section class="hero">
         <div class="container">
@@ -66,7 +67,7 @@
             <a href="#featured" class="pixel-btn">VIEW MY WORK</a>
         </div>
     </section>
-    
+
     <main class="container">
         <!-- About Section: Introduce yourself here -->
         <section id="about" class="fade-in">
@@ -109,7 +110,7 @@
                 <button class="skill-btn" data-skill="web">Web Dev</button>
                 <button class="skill-btn" data-skill="git">Git</button>
             </div>
-            
+
             <!-- Skill descriptions - these appear when a skill button is clicked -->
             <div id="skillDescriptionContainer" class="skill-description-container">
                 <div class="skill-description" id="unity-description">
@@ -138,7 +139,7 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- Featured Games: Your main portfolio pieces -->
         <section id="featured" class="fade-in">
             <h2>FEATURED GAMES</h2>
@@ -162,7 +163,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Game 2 -->
                 <div class="featured-project-card" data-project="game2">
                     <div class="project-image">
@@ -181,7 +182,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Add more featured games as needed -->
             </div>
         </section>
@@ -207,11 +208,11 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Add more technical projects as needed -->
             </div>
         </section>
-        
+
         <!-- Game Jams & Experiments: Quick projects and prototypes -->
         <section id="smaller" class="fade-in">
             <h2>GAME JAMS & EXPERIMENTS</h2>
@@ -235,11 +236,11 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Add more game jams and experiments as needed -->
             </div>
         </section>
-        
+
         <!-- Contact Section: How people can reach you -->
         <section id="contact" class="fade-in">
             <h2>CONTACT ME</h2>
@@ -250,29 +251,29 @@
                         <i class="fas fa-envelope"></i>
                         <p>your.email@example.com</p>
                     </div>
-                    
+
                     <!-- Phone (optional) -->
                     <div class="contact-item vertical">
                         <i class="fas fa-phone"></i>
                         <p>+1 (123) 456-7890</p>
                     </div>
-                    
+
                     <!-- Social Links -->
                     <a href="https://github.com/yourusername" target="_blank" class="social-link-item">
                         <i class="fab fa-github"></i>
                         <span class="social-label">GitHub</span>
                     </a>
-                    
+
                     <a href="https://linkedin.com/in/yourusername" target="_blank" class="social-link-item">
                         <i class="fab fa-linkedin"></i>
                         <span class="social-label">LinkedIn</span>
                     </a>
-                    
+
                     <a href="https://twitter.com/yourusername" target="_blank" class="social-link-item">
                         <i class="fab fa-twitter"></i>
                         <span class="social-label">Twitter</span>
                     </a>
-                    
+
                     <!-- Resume Download -->
                     <a href="resume.pdf" download class="social-link-item">
                         <i class="fas fa-file-alt"></i>
@@ -282,12 +283,12 @@
             </div>
         </section>
     </main>
-    
+
     <!-- Footer -->
     <footer>
         <p>&copy; 2025 Your Name. All Rights Reserved.</p>
     </footer>
-    
+
     <!-- Project Modal Template - this is for the popup when you click on a project -->
     <div class="modal" id="projectModal">
         <div class="modal-content">
@@ -297,7 +298,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Lightbox for images -->
     <div class="lightbox">
         <div class="lightbox-content">
@@ -305,8 +306,8 @@
             <img class="lightbox-image" src="" alt="Project Screenshot">
         </div>
     </div>
-    
-    <!-- Scripts -->
+
+    <!-- Scripts with corrected file paths -->
     <script src="js/project-data.js"></script>
     <script src="js/modal.js"></script>
     <script src="js/main.js"></script>
