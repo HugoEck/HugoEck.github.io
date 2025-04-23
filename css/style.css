@@ -147,6 +147,63 @@ h3 {
     transition: all 0.3s ease;
 }
 
+/* Social Media Icons in Navigation */
+.nav-social {
+    display: flex;
+    align-items: center;
+    margin-right: 2rem;
+}
+
+.nav-social a {
+    color: var(--text);
+    font-size: 1.2rem;
+    margin-left: 1rem;
+    transition: all 0.3s ease;
+}
+
+.nav-social a:hover {
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* Responsive adjustments for the nav with social icons */
+@media screen and (max-width: 768px) {
+    .nav-container {
+        position: relative;
+    }
+    
+    .nav-social {
+        position: absolute;
+        right: 50px; /* Space for burger menu */
+        margin-right: 0;
+    }
+    
+    .nav-social a {
+        font-size: 1.1rem;
+        margin-left: 0.8rem;
+    }
+}
+
+/* Very small screens */
+@media screen and (max-width: 480px) {
+    .nav-social {
+        display: none; /* Hide on very small screens or show in expanded mobile menu */
+    }
+    
+    /* Optional: Add social icons to the mobile menu when expanded */
+    .nav-links.active + .nav-social {
+        display: flex;
+        position: static;
+        justify-content: center;
+        width: 100%;
+        margin-top: 1rem;
+    }
+    
+    .nav-links.active + .nav-social a {
+        margin: 0 1rem;
+    }
+}
+
 /* Main Content */
 .container {
     max-width: 1200px;
