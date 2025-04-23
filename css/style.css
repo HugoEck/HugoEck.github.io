@@ -154,46 +154,21 @@ h3 {
     padding: 3rem 1rem;
 }
 
+/* Adjust main container to account for removed hero */
+main.container {
+    margin-top: 100px; /* Provides space below the navbar */
+}
+
 section {
     margin-bottom: 4rem;
 }
 
-.hero {
-    text-align: center;
-    padding: 4rem 0;
-    position: relative;
-    overflow: hidden;
-    margin-top: 4rem;
-}
-
-.hero::before, .hero::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, var(--dark), var(--primary), var(--secondary), var(--accent), var(--light-accent), var(--accent), var(--secondary), var(--primary), var(--dark));
-    left: 0;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-}
-
-.hero::before {
-    top: 0;
-}
-
+/* Remove hero section styles */
+.hero,
+.hero-pixel,
+.hero::before,
 .hero::after {
-    bottom: 0;
-}
-
-.hero h1 {
-    margin-bottom: 1rem;
-    text-shadow: 4px 4px 0 var(--dark), 0 0 10px rgba(255, 0, 77, 0.3);
-}
-
-.hero p {
-    font-size: 1.5rem;
-    max-width: 800px;
-    margin: 0 auto 2rem;
-    text-shadow: 2px 2px 0px var(--dark);
+    display: none;
 }
 
 .pixel-btn {
@@ -390,44 +365,11 @@ footer::before {
     .nav-links li {
         margin: 1rem 0;
     }
-}
-
-.hero {
-    position: relative;
-    overflow: hidden;
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 50% 50%, rgba(15, 15, 27, 0.4), rgba(15, 15, 27, 0.8));
-    z-index: 1;
-}
-
-.hero-pixel {
-    position: absolute;
-    background-color: var(--primary);
-    opacity: 0.4;
-    z-index: 0;
-    animation: float 8s infinite ease-in-out;
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.15);
-}
-
-.hero-pixel:nth-child(3n) {
-    background-color: var(--secondary);
-}
-
-.hero-pixel:nth-child(3n+1) {
-    background-color: var(--accent);
-}
-
-.hero .container {
-    position: relative;
-    z-index: 2;
+    
+    /* Adjust main container for mobile */
+    main.container {
+        margin-top: 80px;
+    }
 }
 
 /* Skill buttons */
