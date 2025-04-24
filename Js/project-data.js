@@ -40,64 +40,52 @@ function getYouTubeEmbedUrl(url) {
 
 // Project Data Object - Replace with your own projects
 const projectData = {
-    // Featured Games Section - Example projects
     'game1': {
-        title: 'EXAMPLE: Pixel Dungeon',
-        subtitle: 'A Roguelike Dungeon Crawler',
+        title: 'Chained-2-Violence',
+        subtitle: 'Co-op Combat Game',
         description: `
-            <p>This is an example project. Replace with details about your game.</p>
-            <p>In this section, you can describe:</p>
+            <p>This project is a 2 player co-op game where players must work together to defeat enemies.</p>
+            <p>As the group leader, I was responsible for:</p>
             <ul>
-                <li>The game concept and story</li>
-                <li>Key gameplay mechanics</li>
-                <li>Technical challenges you solved</li>
-                <li>Your specific contributions to the project</li>
+                <li>Developing the combat system</li>
+                <li>Implementing player abilities</li>
+                <li>Coordinating team activities</li>
+                <li>Ensuring code quality and integration</li>
             </ul>
-            <p>You can include multiple paragraphs and HTML formatting.</p>
+            <p>The game features unique mechanics where players are connected by a chain, requiring careful coordination.</p>
         `,
         images: [
-            'images/project1.jpg',
-            // Add more image paths here
+            'images/c2v-screenshot1.jpg',
+            'images/c2v-screenshot2.jpg'
+            // Add paths to your screenshot images
         ],
         videos: [
             {
                 title: 'Gameplay Trailer',
-                url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' // Replace with your video
+                url: 'https://www.youtube.com/embed/YOUR_VIDEO_ID' // Replace with actual YouTube embed URL
             }
         ],
         details: [
-            {
-                title: 'TEAM SIZE',
-                content: '3 People'
-            },
-            {
-                title: 'DEVELOPMENT TIME',
-                content: '16 Weeks'
-            },
-            {
-                title: 'ENGINE',
-                content: 'Unity, C#'
-            },
-            {
-                title: 'PLATFORM',
-                content: 'PC, Mobile'
-            },
-            {
-                title: 'ROLE',
-                content: 'Lead Developer'
-            }
+            { title: 'ENGINE', content: 'Unity' },
+            { title: 'GENRE', content: 'Co-op Action' },
+            { title: 'TEAM SIZE', content: '5 People' },
+            { title: 'DURATION', content: '10 Weeks' },
+            { title: 'MY ROLE', content: 'Team Lead, Combat Programmer' }
         ],
         links: [
-            {
-                text: 'PLAY GAME',
-                url: '#'
-            },
-            {
-                text: 'VIEW SOURCE',
-                url: '#'
-            }
+            { text: 'PLAY DEMO', url: '#' }, // Replace with actual URL if available
+            { text: 'VIEW SOURCE', url: '#' } // Replace with GitHub link if available
         ]
     },
+    
+    'game2': {
+        // Similar structure for your second game
+    },
+    
+    'pcg-project': {
+        // Similar structure for your technical project
+    },
+
     
     // Technical Projects Section - Example project
     'pcg-project': {
