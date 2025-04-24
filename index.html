@@ -243,6 +243,44 @@
     <script src="js/main.js"></script>
     <script src="js/lightbox.js"></script>
 
-
+<!-- Add this at the bottom of your index.html before the closing body tag -->
+<script>
+    console.log('Diagnostic script loaded');
+    
+    // Check if modal functions exist
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Project data exists?', typeof projectData !== 'undefined');
+      console.log('openProjectModal exists?', typeof openProjectModal === 'function');
+      
+      // Check project cards
+      const cards = document.querySelectorAll('.project-card, .featured-project-card');
+      console.log('Found project cards:', cards.length);
+      
+      // Add direct click handlers as a backup
+      cards.forEach(card => {
+        card.addEventListener('click', function() {
+          console.log('Card clicked');
+          const projectId = this.getAttribute('data-project');
+          console.log('Project ID:', projectId);
+          
+          if (typeof openProjectModal === 'function') {
+            console.log('Calling openProjectModal');
+            openProjectModal(projectId);
+          } else {
+            console.error('openProjectModal function not found');
+            
+            // Show modal directly as fallback
+            const modal = document.getElementById('projectModal');
+            const modalContent = document.getElementById('modalContent');
+            
+            if (modal && modalContent) {
+              modalContent.innerHTML = `<h2>Project: ${projectId}</h2><p>Modal function not found.</p>`;
+              modal.style.display = 'block';
+            }
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
