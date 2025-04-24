@@ -23,7 +23,7 @@ const projectData = {
             <p>The most challenging aspect was designing the chain mechanics to feel restrictive enough to create interesting gameplay decisions, while not frustrating players. We solved this through extensive playtesting and refining the physics parameters.</p>
         `,
         images: [
-            'images/project1.jpg',
+            'Images/c2v.jpg',
             // Add more screenshots here - use actual paths to your images
             // 'images/c2v-screenshot2.jpg',
             // 'images/c2v-screenshot3.jpg'
