@@ -3,8 +3,9 @@
  * Contains information about all projects displayed on the portfolio
  */
 
+// Project Data Object - Your project details
 const projectData = {
-    // Game Projects
+    // Featured Games Section
     'game1': {
         title: 'Chained-2-Violence',
         subtitle: 'Co-op Combat Game',
@@ -23,12 +24,15 @@ const projectData = {
         `,
         images: [
             'images/project1.jpg',
-            // Add more image paths as needed
+            // Add more screenshots here - use actual paths to your images
+            // 'images/c2v-screenshot2.jpg',
+            // 'images/c2v-screenshot3.jpg'
         ],
         videos: [
+            // Add videos if you have them
             {
                 title: 'Gameplay Demo',
-                url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' // Replace with actual video URL
+                url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' // Replace with actual video URL or remove if no video
             }
         ],
         details: [
@@ -44,6 +48,7 @@ const projectData = {
         ]
     },
     
+    // Game 2
     'game2': {
         title: 'Game Title 2',
         subtitle: 'Brief Game Description',
@@ -61,7 +66,7 @@ const projectData = {
         `,
         images: [
             'images/project2.jpg',
-            // Add more image paths as needed
+            // Add more screenshots here
         ],
         videos: [],
         details: [
@@ -92,18 +97,10 @@ const projectData = {
                 <li>Results and performance metrics</li>
                 <li>What you learned from the experience</li>
             </ul>
-            
-            <p>Include code examples if relevant:</p>
-            <pre><code>
-// Example code snippet
-void SomeFunction() {
-    // Implementation details
-}
-            </code></pre>
         `,
         images: [
             'images/tech1.jpg',
-            // Add more image paths as needed
+            // Add more screenshots here
         ],
         videos: [],
         details: [
@@ -118,5 +115,5 @@ void SomeFunction() {
         ]
     }
     
-    // Add more projects as needed following the same structure
+    // Add more projects as needed
 };
