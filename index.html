@@ -243,469 +243,191 @@
     <script src="js/main.js"></script>
     <script src="js/lightbox.js"></script>
 
-    <!-- Add this script just before the closing </body> tag in your HTML -->
+<!-- Single script to handle project modals -->
 <script>
-    // Ensure modal functionality works
+    // Project data
+    const projectDetails = {
+      'game1': {
+        title: 'Chained-2-Violence',
+        subtitle: 'Co-op Combat Game',
+        description: `
+          <p>This project is a 2-player co-op game where players must work together while being physically chained to each other. I served as the group leader for this project and was primarily responsible for developing the combat and ability systems.</p>
+          
+          <p>Key features I implemented include:</p>
+          <ul>
+              <li>Real-time combat mechanics with multiple weapon types</li>
+              <li>Special abilities system with cooldowns and resource management</li>
+              <li>Chain physics that affect player movement and combat strategies</li>
+              <li>Enemy AI behavior patterns that respond to player positioning</li>
+          </ul>
+          
+          <p>The most challenging aspect was designing the chain mechanics to feel restrictive enough to create interesting gameplay decisions, while not frustrating players. We solved this through extensive playtesting and refining the physics parameters.</p>
+        `,
+        details: [
+          { title: "ENGINE", content: "Unity" },
+          { title: "GENRE", content: "Co-op Action" },
+          { title: "TEAM SIZE", content: "5 People" },
+          { title: "DURATION", content: "10 Weeks" },
+          { title: "MY ROLE", content: "Team Lead, Combat Programmer" }
+        ],
+        links: [
+          { text: "PLAY DEMO", url: "#" },
+          { text: "VIEW SOURCE", url: "https://github.com/HugoEck/Chained-2-Violence" }
+        ]
+      },
+      'game2': {
+        title: 'Game Title 2',
+        subtitle: 'Brief Game Description',
+        description: `
+          <p>Replace this with a detailed description of your second game project. Include information about the concept, gameplay mechanics, technical challenges, and your specific contributions.</p>
+          
+          <p>This section supports HTML formatting, so you can use:</p>
+          <ul>
+              <li>Bullet points for key features</li>
+              <li>Multiple paragraphs for detailed explanations</li>
+              <li>Formatting like <strong>bold text</strong> for emphasis</li>
+          </ul>
+          
+          <p>Explain what made this project unique and what you learned from working on it.</p>
+        `,
+        details: [
+          { title: "ENGINE", content: "Unity/Unreal" },
+          { title: "GENRE", content: "Genre" },
+          { title: "TEAM SIZE", content: "X People" },
+          { title: "DURATION", content: "X Weeks" },
+          { title: "MY ROLE", content: "Your Role" }
+        ],
+        links: [
+          { text: "PLAY DEMO", url: "#" },
+          { text: "VIEW SOURCE", url: "#" }
+        ]
+      },
+      'pcg-project': {
+        title: 'Technical Project 1',
+        subtitle: 'Advanced Technical Implementation',
+        description: `
+          <p>Replace this with a detailed description of your technical project. This could be a procedural generation system, custom physics engine, AI implementation, or any other technical achievement you want to showcase.</p>
+          
+          <p>For technical projects, focus on:</p>
+          <ul>
+              <li>The problem you were trying to solve</li>
+              <li>Your approach and methodology</li>
+              <li>Technologies and algorithms you implemented</li>
+              <li>Results and performance metrics</li>
+              <li>What you learned from the experience</li>
+          </ul>
+        `,
+        details: [
+          { title: "LANGUAGE", content: "C#/C++" },
+          { title: "TECHNOLOGY", content: "Relevant Technologies" },
+          { title: "DURATION", content: "X Weeks" },
+          { title: "CHALLENGE", content: "Main Technical Challenge" }
+        ],
+        links: [
+          { text: "VIEW CODE", url: "#" },
+          { text: "DEMO", url: "#" }
+        ]
+      }
+    };
+  
+    // Simple solution: just replace the click handlers
     document.addEventListener('DOMContentLoaded', function() {
-      console.log('Modal fix script loaded');
-      
-      // Check if project cards exist
+      // Select all project cards
       const projectCards = document.querySelectorAll('.project-card, .featured-project-card');
-      console.log('Found ' + projectCards.length + ' project cards');
-      
-      // Check if modal exists
       const modal = document.getElementById('projectModal');
-      if (!modal) {
-        console.error('Modal element not found!');
-        return;
-      }
+      const modalContent = document.getElementById('modalContent');
+      const closeModalBtn = document.querySelector('.close-modal');
       
-      // Check if project-data.js is loaded
-      if (typeof projectData === 'undefined') {
-        console.error('Project data not loaded! Make sure project-data.js is properly linked.');
-        
-        // Create simple project data if missing
-        window.projectData = {
-          'game1': {
-            title: 'Chained-2-Violence',
-            subtitle: 'Co-op Combat Game',
-            description: 'This project is a 2 player co-op game. I was the group leader of this project and developed the combat/ability-system.',
-            images: [],
-            videos: [],
-            details: [
-              { title: "ENGINE", content: "Unity" },
-              { title: "GENRE", content: "Co-op Action" },
-              { title: "TEAM SIZE", content: "5 People" },
-              { title: "DURATION", content: "10 Weeks" }
-            ],
-            links: [
-              { text: "VIEW PROJECT", url: "#" }
-            ]
-          },
-          'game2': {
-            title: 'Game Title 2',
-            subtitle: 'Game Description',
-            description: 'Detailed information about this game would go here.',
-            images: [],
-            videos: [],
-            details: [
-              { title: "ENGINE", content: "Unity" },
-              { title: "GENRE", content: "TBD" },
-              { title: "TEAM SIZE", content: "TBD" },
-              { title: "DURATION", content: "TBD" }
-            ],
-            links: []
-          },
-          'pcg-project': {
-            title: 'Technical Project 1',
-            subtitle: 'Technical Achievement',
-            description: 'Detailed information about this technical project would go here.',
-            images: [],
-            videos: [],
-            details: [
-              { title: "LANGUAGE", content: "C#" },
-              { title: "TECHNOLOGY", content: "Various" }
-            ],
-            links: []
-          }
-        };
-      }
-      
-      // Define open modal function if not already defined
-      if (typeof openProjectModal !== 'function') {
-        console.warn('openProjectModal function not found, creating backup function');
-        
-        window.openProjectModal = function(projectId) {
-          console.log('Opening project: ' + projectId);
-          
-          // Get project data
-          const project = projectData[projectId] || {
-            title: "Project Details",
-            subtitle: "Project information unavailable",
-            description: "<p>Project information could not be loaded.</p>",
-            details: [],
-            links: []
-          };
-          
-          // Create details HTML
-          let detailsHTML = '';
-          if (project.details && project.details.length > 0) {
-            project.details.forEach(detail => {
-              detailsHTML += `
-                <div class="detail-item">
-                  <h4>${detail.title}</h4>
-                  <p>${detail.content}</p>
-                </div>
-              `;
-            });
-          }
-          
-          // Create links HTML
-          let linksHTML = '';
-          if (project.links && project.links.length > 0) {
-            project.links.forEach(link => {
-              linksHTML += `
-                <a href="${link.url}" class="pixel-btn" target="_blank">${link.text}</a>
-              `;
-            });
-          }
-          
-          // Populate modal content
-          document.getElementById('modalContent').innerHTML = `
-            <div class="modal-header">
-              <h2>${project.title}</h2>
-              <h3>${project.subtitle || ''}</h3>
-            </div>
-            <div class="modal-body">
-              <div class="project-description">${project.description}</div>
-              <h3>PROJECT DETAILS</h3>
-              <div class="project-details">${detailsHTML}</div>
-              ${linksHTML ? `<h3>LINKS</h3><div class="project-links">${linksHTML}</div>` : ''}
-            </div>
-          `;
-          
-          // Display modal
-          modal.style.display = 'block';
-          document.body.style.overflow = 'hidden'; // Prevent scrolling
-          
-          // Add the active class for animation
-          setTimeout(() => {
-            modal.classList.add('active');
-          }, 10);
-        };
-      }
-      
-      // Add click event listeners to project cards
+      // Add click event to project cards
       projectCards.forEach(card => {
-        card.addEventListener('click', function() {
-          console.log('Card clicked');
+        // Remove any existing click handlers
+        const newCard = card.cloneNode(true);
+        card.parentNode.replaceChild(newCard, card);
+        
+        // Add our own click handler
+        newCard.addEventListener('click', function() {
           const projectId = this.getAttribute('data-project');
-          console.log('Project ID: ' + projectId);
-          openProjectModal(projectId);
+          showProjectModal(projectId);
         });
       });
       
       // Close modal when clicking X
-      const closeModal = document.querySelector('.close-modal');
-      if (closeModal) {
-        closeModal.addEventListener('click', function() {
-          modal.classList.remove('active');
-          setTimeout(() => {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Restore scrolling
-          }, 300);
+      if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', function() {
+          closeModal();
         });
       }
       
       // Close modal when clicking outside
       window.addEventListener('click', function(e) {
         if (e.target === modal) {
-          modal.classList.remove('active');
-          setTimeout(() => {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Restore scrolling
-          }, 300);
+          closeModal();
         }
       });
       
-      console.log('Modal functionality initialized');
-    });
-  </script>
-  <!-- Add this script at the end of your HTML file, just before the closing </body> tag -->
-<script>
-    // Project data directly in the HTML
-    const directProjectData = {
-      // Game Projects
-      'game1': {
-          title: 'Chained-2-Violence',
-          subtitle: 'Co-op Combat Game',
-          description: `
-              <p>This project is a 2-player co-op game where players must work together while being physically chained to each other. I served as the group leader for this project and was primarily responsible for developing the combat and ability systems.</p>
-              
-              <p>Key features I implemented include:</p>
-              <ul>
-                  <li>Real-time combat mechanics with multiple weapon types</li>
-                  <li>Special abilities system with cooldowns and resource management</li>
-                  <li>Chain physics that affect player movement and combat strategies</li>
-                  <li>Enemy AI behavior patterns that respond to player positioning</li>
-              </ul>
-              
-              <p>The most challenging aspect was designing the chain mechanics to feel restrictive enough to create interesting gameplay decisions, while not frustrating players. We solved this through extensive playtesting and refining the physics parameters.</p>
-          `,
-          images: [
-              'images/project1.jpg',
-              // Add more image paths as needed
-          ],
-          videos: [
-              {
-                  title: 'Gameplay Demo',
-                  url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' // Replace with actual video URL
-              }
-          ],
-          details: [
-              { title: "ENGINE", content: "Unity" },
-              { title: "GENRE", content: "Co-op Action" },
-              { title: "TEAM SIZE", content: "5 People" },
-              { title: "DURATION", content: "10 Weeks" },
-              { title: "MY ROLE", content: "Team Lead, Combat Programmer" }
-          ],
-          links: [
-              { text: "PLAY DEMO", url: "#" }, // Replace with actual URL if available
-              { text: "VIEW SOURCE", url: "https://github.com/HugoEck/Chained-2-Violence" } // Replace with actual GitHub URL
-          ]
-      },
-      
-      'game2': {
-          title: 'Game Title 2',
-          subtitle: 'Brief Game Description',
-          description: `
-              <p>Replace this with a detailed description of your second game project. Include information about the concept, gameplay mechanics, technical challenges, and your specific contributions.</p>
-              
-              <p>This section supports HTML formatting, so you can use:</p>
-              <ul>
-                  <li>Bullet points for key features</li>
-                  <li>Multiple paragraphs for detailed explanations</li>
-                  <li>Formatting like <strong>bold text</strong> for emphasis</li>
-              </ul>
-              
-              <p>Explain what made this project unique and what you learned from working on it.</p>
-          `,
-          images: [
-              'images/project2.jpg',
-              // Add more image paths as needed
-          ],
-          videos: [],
-          details: [
-              { title: "ENGINE", content: "Unity/Unreal" },
-              { title: "GENRE", content: "Genre" },
-              { title: "TEAM SIZE", content: "X People" },
-              { title: "DURATION", content: "X Weeks" },
-              { title: "MY ROLE", content: "Your Role" }
-          ],
-          links: [
-              { text: "PLAY DEMO", url: "#" },
-              { text: "VIEW SOURCE", url: "#" }
-          ]
-      },
-      
-      // Technical Projects
-      'pcg-project': {
-          title: 'Technical Project 1',
-          subtitle: 'Advanced Technical Implementation',
-          description: `
-              <p>Replace this with a detailed description of your technical project. This could be a procedural generation system, custom physics engine, AI implementation, or any other technical achievement you want to showcase.</p>
-              
-              <p>For technical projects, focus on:</p>
-              <ul>
-                  <li>The problem you were trying to solve</li>
-                  <li>Your approach and methodology</li>
-                  <li>Technologies and algorithms you implemented</li>
-                  <li>Results and performance metrics</li>
-                  <li>What you learned from the experience</li>
-              </ul>
-          `,
-          images: [
-              'images/tech1.jpg',
-              // Add more image paths as needed
-          ],
-          videos: [],
-          details: [
-              { title: "LANGUAGE", content: "C#/C++" },
-              { title: "TECHNOLOGY", content: "Relevant Technologies" },
-              { title: "DURATION", content: "X Weeks" },
-              { title: "CHALLENGE", content: "Main Technical Challenge" }
-          ],
-          links: [
-              { text: "VIEW CODE", url: "#" },
-              { text: "DEMO", url: "#" }
-          ]
-      }
-    };
-  
-    // Direct modal function that doesn't rely on external files
-    function directOpenModal(projectId) {
-      console.log("Opening project with ID: " + projectId);
-      
-      // Get project data from our direct source
-      const project = directProjectData[projectId];
-      
-      if (!project) {
-        console.error("Project data not found for ID: " + projectId);
-        return;
-      }
-      
-      console.log("Project data found:", project.title);
-      
-      // Get modal elements
-      const modal = document.getElementById('projectModal');
-      const modalContent = document.getElementById('modalContent');
-      
-      if (!modal || !modalContent) {
-        console.error("Modal elements not found");
-        return;
-      }
-      
-      // Create gallery items HTML
-      let galleryHTML = '';
-      if (project.images && project.images.length > 0) {
-        project.images.forEach(img => {
-          galleryHTML += `
-            <div class="gallery-item">
-              <img src="${img}" alt="Project Screenshot">
-            </div>
-          `;
-        });
-      }
-      
-      // Create video items HTML
-      let videoHTML = '';
-      if (project.videos && project.videos.length > 0) {
-        project.videos.forEach(video => {
-          videoHTML += `
-            <div class="video-item">
-              <h4>${video.title}</h4>
-              <div class="video-container">
-                <iframe 
-                  width="100%" 
-                  height="315" 
-                  src="${video.url}" 
-                  title="${video.title}"
-                  frameborder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowfullscreen>
-                </iframe>
-              </div>
-            </div>
-          `;
-        });
-      }
-      
-      // Create details HTML
-      let detailsHTML = '';
-      if (project.details && project.details.length > 0) {
-        project.details.forEach(detail => {
-          detailsHTML += `
-            <div class="detail-item">
-              <h4>${detail.title}</h4>
-              <p>${detail.content}</p>
-            </div>
-          `;
-        });
-      }
-      
-      // Create links HTML
-      let linksHTML = '';
-      if (project.links && project.links.length > 0) {
-        project.links.forEach(link => {
-          linksHTML += `
-            <a href="${link.url}" class="pixel-btn" target="_blank">${link.text}</a>
-          `;
-        });
-      }
-      
-      // Populate modal content
-      modalContent.innerHTML = `
-        <div class="modal-header">
-          <h2>${project.title}</h2>
-          <h3>${project.subtitle || ''}</h3>
-        </div>
-        <div class="modal-body">
-          <div class="project-description">${project.description}</div>
-          
-          ${galleryHTML ? `
-            <div class="project-media-tabs">
-              <button class="media-tab active" data-tab="screenshots">SCREENSHOTS</button>
-              ${videoHTML ? `<button class="media-tab" data-tab="videos">VIDEOS</button>` : ''}
-            </div>
-            
-            <div class="media-content active" id="screenshots-content">
-              <div class="project-gallery">${galleryHTML}</div>
-            </div>
-            
-            ${videoHTML ? `
-              <div class="media-content" id="videos-content">
-                <div class="project-videos">${videoHTML}</div>
-              </div>
-            ` : ''}
-          ` : ''}
-          
-          <h3>PROJECT DETAILS</h3>
-          <div class="project-details">${detailsHTML}</div>
-          
-          ${linksHTML ? `<h3>LINKS</h3><div class="project-links">${linksHTML}</div>` : ''}
-        </div>
-      `;
-      
-      // Add tab switching functionality
-      setTimeout(() => {
-        const tabs = document.querySelectorAll('.media-tab');
-        const contents = document.querySelectorAll('.media-content');
+      // Function to display project modal
+      function showProjectModal(projectId) {
+        const project = projectDetails[projectId];
         
-        tabs.forEach(tab => {
-          tab.addEventListener('click', () => {
-            // Remove active class from all tabs and contents
-            tabs.forEach(t => t.classList.remove('active'));
-            contents.forEach(c => c.classList.remove('active'));
-            
-            // Add active class to clicked tab
-            tab.classList.add('active');
-            
-            // Show corresponding content
-            const tabName = tab.getAttribute('data-tab');
-            document.getElementById(`${tabName}-content`).classList.add('active');
+        if (!project) {
+          console.error('Project not found:', projectId);
+          return;
+        }
+        
+        // Create details HTML
+        let detailsHTML = '';
+        if (project.details && project.details.length > 0) {
+          project.details.forEach(detail => {
+            detailsHTML += `
+              <div class="detail-item">
+                <h4>${detail.title}</h4>
+                <p>${detail.content}</p>
+              </div>
+            `;
           });
-        });
-      }, 100);
-      
-      // Show modal
-      modal.style.display = 'block';
-      document.body.style.overflow = 'hidden'; // Prevent scrolling
-      
-      // Trigger animation
-      setTimeout(() => {
-        modal.classList.add('active');
-      }, 10);
-    }
-  
-    // Add our direct event listeners
-    document.addEventListener('DOMContentLoaded', function() {
-      console.log("Setting up direct modal functionality");
-      
-      // Add click events to all project cards
-      const projectCards = document.querySelectorAll('.project-card, .featured-project-card');
-      projectCards.forEach(card => {
-        card.addEventListener('click', function(e) {
-          const projectId = this.getAttribute('data-project');
-          console.log("Card clicked, project ID:", projectId);
-          directOpenModal(projectId);
-          e.stopPropagation(); // Prevent other click handlers
-        });
-      });
-      
-      // Close modal handlers
-      const closeModalBtn = document.querySelector('.close-modal');
-      const modal = document.getElementById('projectModal');
-      
-      if (closeModalBtn && modal) {
-        // Close with X button
-        closeModalBtn.addEventListener('click', function() {
-          modal.classList.remove('active');
-          setTimeout(() => {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Restore scrolling
-          }, 300);
-        });
+        }
         
-        // Close when clicking outside
-        window.addEventListener('click', function(e) {
-          if (e.target === modal) {
-            modal.classList.remove('active');
-            setTimeout(() => {
-              modal.style.display = 'none';
-              document.body.style.overflow = 'auto'; // Restore scrolling
-            }, 300);
-          }
-        });
+        // Create links HTML
+        let linksHTML = '';
+        if (project.links && project.links.length > 0) {
+          project.links.forEach(link => {
+            linksHTML += `
+              <a href="${link.url}" class="pixel-btn" target="_blank">${link.text}</a>
+            `;
+          });
+        }
+        
+        // Populate modal content
+        modalContent.innerHTML = `
+          <div class="modal-header">
+            <h2>${project.title}</h2>
+            <h3>${project.subtitle || ''}</h3>
+          </div>
+          <div class="modal-body">
+            <div class="project-description">${project.description}</div>
+            <h3>PROJECT DETAILS</h3>
+            <div class="project-details">${detailsHTML}</div>
+            ${linksHTML ? `<h3>LINKS</h3><div class="project-links">${linksHTML}</div>` : ''}
+          </div>
+        `;
+        
+        // Show modal
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+        
+        // Trigger animation
+        setTimeout(() => {
+          modal.classList.add('active');
+        }, 10);
+      }
+      
+      // Function to close modal
+      function closeModal() {
+        modal.classList.remove('active');
+        setTimeout(() => {
+          modal.style.display = 'none';
+          document.body.style.overflow = 'auto'; // Restore scrolling
+        }, 300);
       }
     });
   </script>
