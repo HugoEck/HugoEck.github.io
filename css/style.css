@@ -652,3 +652,42 @@ footer::before {
     50% { opacity: 1; }
     100% { opacity: 0.9; }
 }
+
+<!-- Recommended CSS to accompany the HTML (can be added to your existing style.css) -->
+<style>
+.project-tags {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    background-color: var(--dark);
+    color: var(--text);
+    border: 1px solid var(--primary);
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border-radius: 4px;
+}
+
+.tag i {
+    margin-right: 0.5rem;
+    color: var(--accent);
+}
+
+.tag:hover {
+    background-color: var(--secondary);
+    transform: translateY(-3px);
+}
+
+.tag-text {
+    display: inline-block;
+}
+</style>
