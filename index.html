@@ -242,5 +242,174 @@
     <script src="js/modal.js"></script>
     <script src="js/main.js"></script>
     <script src="js/lightbox.js"></script>
+
+    <!-- Add this script just before the closing </body> tag in your HTML -->
+<script>
+    // Ensure modal functionality works
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Modal fix script loaded');
+      
+      // Check if project cards exist
+      const projectCards = document.querySelectorAll('.project-card, .featured-project-card');
+      console.log('Found ' + projectCards.length + ' project cards');
+      
+      // Check if modal exists
+      const modal = document.getElementById('projectModal');
+      if (!modal) {
+        console.error('Modal element not found!');
+        return;
+      }
+      
+      // Check if project-data.js is loaded
+      if (typeof projectData === 'undefined') {
+        console.error('Project data not loaded! Make sure project-data.js is properly linked.');
+        
+        // Create simple project data if missing
+        window.projectData = {
+          'game1': {
+            title: 'Chained-2-Violence',
+            subtitle: 'Co-op Combat Game',
+            description: 'This project is a 2 player co-op game. I was the group leader of this project and developed the combat/ability-system.',
+            images: [],
+            videos: [],
+            details: [
+              { title: "ENGINE", content: "Unity" },
+              { title: "GENRE", content: "Co-op Action" },
+              { title: "TEAM SIZE", content: "5 People" },
+              { title: "DURATION", content: "10 Weeks" }
+            ],
+            links: [
+              { text: "VIEW PROJECT", url: "#" }
+            ]
+          },
+          'game2': {
+            title: 'Game Title 2',
+            subtitle: 'Game Description',
+            description: 'Detailed information about this game would go here.',
+            images: [],
+            videos: [],
+            details: [
+              { title: "ENGINE", content: "Unity" },
+              { title: "GENRE", content: "TBD" },
+              { title: "TEAM SIZE", content: "TBD" },
+              { title: "DURATION", content: "TBD" }
+            ],
+            links: []
+          },
+          'pcg-project': {
+            title: 'Technical Project 1',
+            subtitle: 'Technical Achievement',
+            description: 'Detailed information about this technical project would go here.',
+            images: [],
+            videos: [],
+            details: [
+              { title: "LANGUAGE", content: "C#" },
+              { title: "TECHNOLOGY", content: "Various" }
+            ],
+            links: []
+          }
+        };
+      }
+      
+      // Define open modal function if not already defined
+      if (typeof openProjectModal !== 'function') {
+        console.warn('openProjectModal function not found, creating backup function');
+        
+        window.openProjectModal = function(projectId) {
+          console.log('Opening project: ' + projectId);
+          
+          // Get project data
+          const project = projectData[projectId] || {
+            title: "Project Details",
+            subtitle: "Project information unavailable",
+            description: "<p>Project information could not be loaded.</p>",
+            details: [],
+            links: []
+          };
+          
+          // Create details HTML
+          let detailsHTML = '';
+          if (project.details && project.details.length > 0) {
+            project.details.forEach(detail => {
+              detailsHTML += `
+                <div class="detail-item">
+                  <h4>${detail.title}</h4>
+                  <p>${detail.content}</p>
+                </div>
+              `;
+            });
+          }
+          
+          // Create links HTML
+          let linksHTML = '';
+          if (project.links && project.links.length > 0) {
+            project.links.forEach(link => {
+              linksHTML += `
+                <a href="${link.url}" class="pixel-btn" target="_blank">${link.text}</a>
+              `;
+            });
+          }
+          
+          // Populate modal content
+          document.getElementById('modalContent').innerHTML = `
+            <div class="modal-header">
+              <h2>${project.title}</h2>
+              <h3>${project.subtitle || ''}</h3>
+            </div>
+            <div class="modal-body">
+              <div class="project-description">${project.description}</div>
+              <h3>PROJECT DETAILS</h3>
+              <div class="project-details">${detailsHTML}</div>
+              ${linksHTML ? `<h3>LINKS</h3><div class="project-links">${linksHTML}</div>` : ''}
+            </div>
+          `;
+          
+          // Display modal
+          modal.style.display = 'block';
+          document.body.style.overflow = 'hidden'; // Prevent scrolling
+          
+          // Add the active class for animation
+          setTimeout(() => {
+            modal.classList.add('active');
+          }, 10);
+        };
+      }
+      
+      // Add click event listeners to project cards
+      projectCards.forEach(card => {
+        card.addEventListener('click', function() {
+          console.log('Card clicked');
+          const projectId = this.getAttribute('data-project');
+          console.log('Project ID: ' + projectId);
+          openProjectModal(projectId);
+        });
+      });
+      
+      // Close modal when clicking X
+      const closeModal = document.querySelector('.close-modal');
+      if (closeModal) {
+        closeModal.addEventListener('click', function() {
+          modal.classList.remove('active');
+          setTimeout(() => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+          }, 300);
+        });
+      }
+      
+      // Close modal when clicking outside
+      window.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          modal.classList.remove('active');
+          setTimeout(() => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+          }, 300);
+        }
+      });
+      
+      console.log('Modal functionality initialized');
+    });
+  </script>
 </body>
 </html>
