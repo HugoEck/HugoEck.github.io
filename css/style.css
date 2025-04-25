@@ -512,8 +512,8 @@ footer::before {
 
 .skill-btn.active {
     background-color: var(--accent);
-    transform: translateY(-5px);
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3); /* Lighter shadow */
+    transform: translateY(-3px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
 }
 
 .skill-description-container {
@@ -546,7 +546,7 @@ footer::before {
 
 .skill-description.active {
     display: block;
-    animation: fadeIn 0.3s ease-in;
+    /* remove the animation property */
 }
 
 /* Modal Adjustments for thinner borders */
