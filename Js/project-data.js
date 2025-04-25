@@ -10,18 +10,6 @@ const projectData = {
         title: 'Chained-2-Violence',
         subtitle: 'Co-op Combat Game',
         description: `
-            <p>This project is a 2-player co-op game where players must work together while being physically chained to each other. I served as the group leader for this project and was primarily responsible for developing the combat and ability systems.</p>
-            
-            <p>Key features I implemented include:</p>
-            <ul>
-                <li>Real-time combat mechanics with multiple weapon types</li>
-                <li>Special abilities system with cooldowns and resource management</li>
-                <li>Chain physics that affect player movement and combat strategies</li>
-                <li>Enemy AI behavior patterns that respond to player positioning</li>
-            </ul>
-            
-            <p>The most challenging aspect was designing the chain mechanics to feel restrictive enough to create interesting gameplay decisions, while not frustrating players. We solved this through extensive playtesting and refining the physics parameters.</p>
-
             <h3>Ability System for Chained-2-Violence</h3>
             
             <h4>Overview</h4>
@@ -47,10 +35,10 @@ const projectData = {
             <h4>System Design</h4>
             <p>The system includes various ability types (Cone, Projectile, Shield, and Swing), each implementing the IAbility interface while providing unique gameplay mechanics. Rather than creating a monolithic ability controller, each ability is encapsulated in its own class, promoting:</p>
             <ul>
-                <li><strong>Single Responsibility:</strong> Each ability handles only its specific behavior</li>
-                <li><strong>Extensibility:</strong> New abilities can be added without modifying existing code</li>
-                <li><strong>Configurability:</strong> Designer-friendly parameters exposed via Unity's Inspector</li>
-                <li><strong>Reusability:</strong> Core ability components can be mixed and matched for new effects</li>
+                <li>Single Responsibility: Each ability handles only its specific behavior</li>
+                <li>Extensibility: New abilities can be added without modifying existing code</li>
+                <li>Configurability: Designer-friendly parameters exposed via Unity's Inspector</li>
+                <li>Reusability: Core ability components can be mixed and matched for new effects</li>
             </ul>
 
             <h4>Technical Highlights</h4>
@@ -93,20 +81,20 @@ const projectData = {
             
             <p><strong>Physics & Gameplay Integration</strong></p>
             <ul>
-                <li><strong>Challenge:</strong> Balancing realistic physics with responsive gameplay mechanics</li>
-                <li><strong>Solution:</strong> Created a hybrid approach using selective physics manipulation and custom movement calculations</li>
+                <li>Challenge: Balancing realistic physics with responsive gameplay mechanics</li>
+                <li>Solution: Created a hybrid approach using selective physics manipulation and custom movement calculations</li>
             </ul>
 
             <p><strong>State Management</strong></p>
             <ul>
-                <li><strong>Challenge:</strong> Maintaining consistent ability states across networked players</li>
-                <li><strong>Solution:</strong> Implemented a robust state tracking system with appropriate flags to prevent conflicting ability activations</li>
+                <li>Challenge: Maintaining consistent ability states across networked players</li>
+                <li>Solution: Implemented a robust state tracking system with appropriate flags to prevent conflicting ability activations</li>
             </ul>
 
             <p><strong>Performance Optimization</strong></p>
             <ul>
-                <li><strong>Challenge:</strong> Ensuring ability effects remained performant even with many actors</li>
-                <li><strong>Solution:</strong> Utilized efficient physics queries and object pooling for projectiles and visual effects</li>
+                <li>Challenge: Ensuring ability effects remained performant even with many actors</li>
+                <li>Solution: Utilized efficient physics queries and object pooling for projectiles and visual effects</li>
             </ul>
 
             <h4>Outcome</h4>
