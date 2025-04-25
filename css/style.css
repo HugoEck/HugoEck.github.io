@@ -328,6 +328,28 @@ section {
     text-align: center;
 }
 
+.contact-section::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 10px; /* Smaller accent box */
+    height: 10px;
+    background-color: var(--accent);
+    box-shadow: 0 0 5px rgba(0, 231, 86, 0.4);
+}
+
+.contact-section::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    width: 10px; /* Smaller accent box */
+    height: 10px;
+    background-color: var(--accent);
+    box-shadow: 0 0 5px rgba(0, 231, 86, 0.4);
+}
+
 /* Contact info items */
 .contact-row {
     display: flex;
@@ -407,8 +429,8 @@ footer::before {
     top: 0;
     left: 0;
     width: 100%;
-    height: 2px; /* Keep the same height */
-    background: var(--primary); /* Single color - using the primary color */
+    height: 2px; /* Thinner border */
+    background: linear-gradient(90deg, var(--dark), var(--primary), var(--secondary), var(--accent), var(--light-accent), var(--accent), var(--secondary), var(--primary), var(--dark));
 }
 
 /* Responsive Design */
