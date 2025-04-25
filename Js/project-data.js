@@ -12,89 +12,113 @@ const projectData = {
         description: `
             <p>This project is a 2-player co-op game where players must work together while being physically chained to each other. I served as the group leader for this project and was primarily responsible for developing the combat and ability systems.</p>
             
-            Ability System for Chained-2-Violence
-Overview
-For Chained-2-Violence, I developed a modular and extensible ability system using C# and Unity. The system allows players to wield a diverse range of combat abilities including projectile attacks, area-of-effect abilities, defensive shields, and unique cooperative mechanics that leverage the game's core chained-character concept.
-Technical Architecture
-Core Design Pattern
-The system is built on a clean interface-based architecture that follows the Command Pattern, allowing for:
+            <p>Key features I implemented include:</p>
+            <ul>
+                <li>Real-time combat mechanics with multiple weapon types</li>
+                <li>Special abilities system with cooldowns and resource management</li>
+                <li>Chain physics that affect player movement and combat strategies</li>
+                <li>Enemy AI behavior patterns that respond to player positioning</li>
+            </ul>
+            
+            <p>The most challenging aspect was designing the chain mechanics to feel restrictive enough to create interesting gameplay decisions, while not frustrating players. We solved this through extensive playtesting and refining the physics parameters.</p>
 
-Decoupling ability logic from player controllers
-Easy implementation of new abilities without modifying existing code
-Runtime ability swapping and combination
+            <h3>Ability System for Chained-2-Violence</h3>
+            
+            <h4>Overview</h4>
+            <p>For Chained-2-Violence, I developed a modular and extensible ability system using C# and Unity. The system allows players to wield a diverse range of combat abilities including projectile attacks, area-of-effect abilities, defensive shields, and unique cooperative mechanics that leverage the game's core chained-character concept.</p>
+            
+            <h4>Technical Architecture</h4>
+            <p>The system is built on a clean interface-based architecture that follows the Command Pattern, allowing for:</p>
+            <ul>
+                <li>Decoupling ability logic from player controllers</li>
+                <li>Easy implementation of new abilities without modifying existing code</li>
+                <li>Runtime ability swapping and combination</li>
+            </ul>
 
-Implementation Details
-Interface Foundation
-At the core of the system is the IAbility interface that provides a consistent contract:
-csharppublic interface IAbility
+            <p>At the core of the system is the IAbility interface that provides a consistent contract:</p>
+            
+            <pre><code>public interface IAbility
 {
     public void UseAbility();
-}
-This simple yet powerful approach ensures all abilities can be triggered through a consistent API while allowing for unique implementations.
-System Design
-The system includes various ability types (Cone, Projectile, Shield, and Swing), each implementing the IAbility interface while providing unique gameplay mechanics. Rather than creating a monolithic ability controller, each ability is encapsulated in its own class, promoting:
+}</code></pre>
+            
+            <p>This simple yet powerful approach ensures all abilities can be triggered through a consistent API while allowing for unique implementations.</p>
+            
+            <h4>System Design</h4>
+            <p>The system includes various ability types (Cone, Projectile, Shield, and Swing), each implementing the IAbility interface while providing unique gameplay mechanics. Rather than creating a monolithic ability controller, each ability is encapsulated in its own class, promoting:</p>
+            <ul>
+                <li><strong>Single Responsibility:</strong> Each ability handles only its specific behavior</li>
+                <li><strong>Extensibility:</strong> New abilities can be added without modifying existing code</li>
+                <li><strong>Configurability:</strong> Designer-friendly parameters exposed via Unity's Inspector</li>
+                <li><strong>Reusability:</strong> Core ability components can be mixed and matched for new effects</li>
+            </ul>
 
-Single Responsibility: Each ability handles only its specific behavior
-Extensibility: New abilities can be added without modifying existing code
-Configurability: Designer-friendly parameters exposed via Unity's Inspector
-Reusability: Core ability components can be mixed and matched for new effects
+            <h4>Technical Highlights</h4>
+            
+            <p><strong>Physics Integration</strong></p>
+            <p>The ability system leverages Unity's physics engine for gameplay mechanics:</p>
+            <ul>
+                <li>Spatial awareness through physics raycasting and overlap detection</li>
+                <li>Layer-based filtering for targeted ability effects</li>
+                <li>Physics-based movement and collision handling</li>
+            </ul>
 
-Technical Highlights
-Physics Integration
-The ability system leverages Unity's physics engine for gameplay mechanics:
+            <p><strong>Cooperative Mechanics</strong></p>
+            <p>The system supports the game's unique cooperative gameplay through abilities that:</p>
+            <ul>
+                <li>React to the dynamic chain connecting players</li>
+                <li>Allow players to affect each other's positioning and protection</li>
+                <li>Create emergent gameplay through combined ability effects</li>
+            </ul>
 
-Spatial awareness through physics raycasting and overlap detection
-Layer-based filtering for targeted ability effects
-Physics-based movement and collision handling
+            <p><strong>Developer Experience</strong></p>
+            <p>The system includes tools that enhance development efficiency:</p>
+            <ul>
+                <li>Real-time visual debugging through custom Gizmos</li>
+                <li>Extensive parameter customization via Inspector</li>
+                <li>Clear entry points for extending and modifying abilities</li>
+            </ul>
 
-Cooperative Mechanics
-The system supports the game's unique cooperative gameplay through abilities that:
+            <h4>Development Process</h4>
+            <p>The ability system was developed using an iterative approach:</p>
+            <ol>
+                <li>Core interface design to establish the foundation</li>
+                <li>Implementation of basic ability prototypes</li>
+                <li>Testing and refinement of physics interactions</li>
+                <li>Integration with damage systems and enemy behaviors</li>
+                <li>Visual polish and effect implementation</li>
+            </ol>
 
-React to the dynamic chain connecting players
-Allow players to affect each other's positioning and protection
-Create emergent gameplay through combined ability effects
+            <h4>Technical Challenges & Solutions</h4>
+            
+            <p><strong>Physics & Gameplay Integration</strong></p>
+            <ul>
+                <li><strong>Challenge:</strong> Balancing realistic physics with responsive gameplay mechanics</li>
+                <li><strong>Solution:</strong> Created a hybrid approach using selective physics manipulation and custom movement calculations</li>
+            </ul>
 
-Developer Experience
-The system includes tools that enhance development efficiency:
+            <p><strong>State Management</strong></p>
+            <ul>
+                <li><strong>Challenge:</strong> Maintaining consistent ability states across networked players</li>
+                <li><strong>Solution:</strong> Implemented a robust state tracking system with appropriate flags to prevent conflicting ability activations</li>
+            </ul>
 
-Real-time visual debugging through custom Gizmos
-Extensive parameter customization via Inspector
-Clear entry points for extending and modifying abilities
+            <p><strong>Performance Optimization</strong></p>
+            <ul>
+                <li><strong>Challenge:</strong> Ensuring ability effects remained performant even with many actors</li>
+                <li><strong>Solution:</strong> Utilized efficient physics queries and object pooling for projectiles and visual effects</li>
+            </ul>
 
-Development Process
-The ability system was developed using an iterative approach:
+            <h4>Outcome</h4>
+            <p>The resulting ability system provides players with diverse combat options while maintaining code quality through:</p>
+            <ul>
+                <li>High cohesion within each ability class</li>
+                <li>Low coupling between system components</li>
+                <li>Extensive configurability through Unity's Inspector</li>
+                <li>Scalable architecture for adding new abilities</li>
+            </ul>
 
-Core interface design to establish the foundation
-Implementation of basic ability prototypes
-Testing and refinement of physics interactions
-Integration with damage systems and enemy behaviors
-Visual polish and effect implementation
-
-Technical Challenges & Solutions
-Physics & Gameplay Integration
-
-Challenge: Balancing realistic physics with responsive gameplay mechanics
-Solution: Created a hybrid approach using selective physics manipulation and custom movement calculations
-
-State Management
-
-Challenge: Maintaining consistent ability states across networked players
-Solution: Implemented a robust state tracking system with appropriate flags to prevent conflicting ability activations
-
-Performance Optimization
-
-Challenge: Ensuring ability effects remained performant even with many actors
-Solution: Utilized efficient physics queries and object pooling for projectiles and visual effects
-
-Outcome
-The resulting ability system provides players with diverse combat options while maintaining code quality through:
-
-High cohesion within each ability class
-Low coupling between system components
-Extensive configurability through Unity's Inspector
-Scalable architecture for adding new abilities
-
-This system demonstrates my approach to game systems programming with a focus on maintainable code, gameplay-driven design, and effective use of Unity's physics and rendering capabilities.
+            <p>This system demonstrates my approach to game systems programming with a focus on maintainable code, gameplay-driven design, and effective use of Unity's physics and rendering capabilities.</p>
         `,
         images: [
             'Images/c2v.jpg',
@@ -121,7 +145,6 @@ This system demonstrates my approach to game systems programming with a focus on
             { text: "VIEW SOURCE", url: "https://github.com/HugoEck/Chained-2-Violence" } // Replace with actual GitHub URL
         ]
     },
-    
     // Game 2
     'game2': {
         title: 'Game Title 2',
