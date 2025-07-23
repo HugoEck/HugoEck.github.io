@@ -158,6 +158,45 @@ const projectData = {
             { text: "VIEW CODE", url: "#" },
             { text: "LIVE DEMO", url: "#" }
         ]
+    },
+
+    'physics-engine': {
+        title: 'Custom 2D Physics Engine',
+        subtitle: 'Complete Physics Simulation System',
+        description: `
+    <p>A comprehensive 2D physics engine built from scratch in Unity, implementing fundamental physics principles and collision systems for realistic object interactions and dynamics.</p>
+    
+    <br>
+    <h3>Force Management System</h3>
+    <p>Developed a robust force application system handling gravity, friction, and custom forces with proper force accumulation and clearing mechanisms. The system supports both continuous forces and impulse-based interactions for realistic object behavior.</p>
+    
+    <br>
+    <h3>Time Integration & Motion</h3>
+    <p>Implemented numerical integration methods for accurate position and velocity calculations over time. The system uses Euler integration with delta time scaling to ensure consistent physics simulation regardless of framerate variations.</p>
+    
+    <p>Features proper velocity and acceleration calculations, maintaining realistic motion physics with support for variable mass objects and momentum conservation principles.</p>
+    
+    <br>
+    <h3>2D Collision Detection & Response</h3>
+    <p>Built a complete collision detection system supporting circle-circle, box-box, and circle-box collision algorithms with accurate collision response calculations including proper velocity reflection and energy conservation.</p>
+    
+    <p>This project demonstrates mastery of core physics programming concepts, from fundamental force calculations to complex collision mathematics, showcasing the essential components required for any physics simulation system.</p>
+    `,
+        images: [
+            'Images/circle_collide.gif',
+            'Images/forces.gif'
+        ],
+        videos: [],
+        details: [
+            { title: "LANGUAGE", content: "C# / Unity" },
+            { title: "FEATURES", content: "Force Management, Time Integration, 2D Collisions" },
+            { title: "DURATION", content: "School Project" },
+            { title: "CHALLENGE", content: "Building Physics from Scratch" }
+        ],
+        links: [
+            { text: "VIEW CODE", url: "#" },
+            { text: "LIVE DEMO", url: "#" }
+        ]
     }
 
     // Add more projects as needed
