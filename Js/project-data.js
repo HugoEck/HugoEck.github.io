@@ -254,20 +254,17 @@ const projectData = {
 
     <p>The resulting vector implementation provides a complete STL-compatible container while demonstrating advanced C++ concepts including template programming, custom memory management, move semantics, and iterator design. This project showcases my understanding of systems-level programming, memory management, and the principles underlying high-performance C++ libraries.</p>
 `,
-        images: [
-            'Images/circle_collide.gif',
-            'Images/forces.gif'
-        ],
+        images: [],
         videos: [],
         details: [
-            { title: "LANGUAGE", content: "C# / Unity" },
-            { title: "FEATURES", content: "Force Management, Time Integration, 2D Collisions" },
-            { title: "DURATION", content: "School Project" },
-            { title: "CHALLENGE", content: "Building Physics from Scratch" }
+            { title: "LANGUAGE", content: "C++" },
+            { title: "FEATURES", content: "Memory Management, Move Semantics, Full Iterator Support" },
+            { title: "DURATION", content: "Advanced C++ Course" },
+            { title: "CHALLENGE", content: "STL-Compatible Container from Scratch" }
         ],
         links: [
-            { text: "VIEW CODE", url: "#" },
-            { text: "LIVE DEMO", url: "#" }
+            { text: "VIEW CODE", url: "https://github.com/HugoEck/L6_Hugo/blob/master/L6_Hugo/Vector.hpp" }
+            //{ text: "RUN TESTS", url: "#" }
         ]
     }
 
