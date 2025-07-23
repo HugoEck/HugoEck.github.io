@@ -144,8 +144,8 @@ const projectData = {
     `,
         images: [
             'Images/MayzLogo.jpg',
-            'Images/Kruskal.PNG',
-            'Images/cellular_automata.PNG'
+            'Images/Kruskal.jpg',
+            'Images/cellular_automata.jpg'
         ],
         videos: [],
         details: [
