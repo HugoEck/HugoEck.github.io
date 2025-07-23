@@ -119,34 +119,40 @@ const projectData = {
     
     // Technical Projects
     'pcg-project': {
-        title: 'Technical Project 1',
-        subtitle: 'Advanced Technical Implementation',
+        title: 'Procedural Content Generation Suite',
+        subtitle: 'Multi-Algorithm Content Generation System',
         description: `
-            <p>Replace this with a detailed description of your technical project. This could be a procedural generation system, custom physics engine, AI implementation, or any other technical achievement you want to showcase.</p>
-            
-            <p>For technical projects, focus on:</p>
-            <ul>
-                <li>The problem you were trying to solve</li>
-                <li>Your approach and methodology</li>
-                <li>Technologies and algorithms you implemented</li>
-                <li>Results and performance metrics</li>
-                <li>What you learned from the experience</li>
-            </ul>
-        `,
+        <p>A comprehensive procedural generation toolkit implementing three distinct content generation systems, each showcasing different algorithmic approaches to automated content creation.</p>
+        
+        <br>
+        <h3>Maze Generation System</h3>
+        <p>Features three classic maze generation algorithms (Depth-First Search, Kruskal's, and Prim's) with an intelligent AI system that dynamically adjusts maze difficulty by randomly opening or closing dead ends. Includes configurable maze dimensions for scalable generation.</p>
+        
+        <br>
+        <h3>Cave System Generator using Cellular Automata</h3>
+        <p>Utilizes cellular automata algorithms to procedurally generate realistic 2D cave networks with organic, naturally-flowing formations through iterative rule-based evolution.</p>
+        
+        <br>
+        <h3>3D Terrain Generation using Perlin Noise</h3>
+        <p>Implements Perlin noise algorithms to create dynamic 3D landscapes with realistic height variations and natural terrain features on a procedurally generated plane.</p>
+        
+        <p>This project demonstrates mastery of multiple procedural generation paradigms, from graph-based algorithms to noise functions and cellular automation, showcasing the versatility and power of algorithmic content creation.</p>
+    `,
         images: [
-            'images/tech1.jpg',
-            // Add more screenshots here
+            'Images/maze-generation.jpg',
+            'Images/cave-system.jpg',
+            'Images/terrain-generation.jpg'
         ],
         videos: [],
         details: [
-            { title: "LANGUAGE", content: "C#/C++" },
-            { title: "TECHNOLOGY", content: "Relevant Technologies" },
-            { title: "DURATION", content: "X Weeks" },
-            { title: "CHALLENGE", content: "Main Technical Challenge" }
+            { title: "LANGUAGE", content: "C# / Unity" },
+            { title: "ALGORITHMS", content: "DFS, Kruskal, Prim's, Cellular Automata, Perlin Noise" },
+            { title: "DURATION", content: "3 Weeks" },
+            { title: "CHALLENGE", content: "Multi-Algorithm Integration & AI Difficulty Scaling" }
         ],
         links: [
             { text: "VIEW CODE", url: "#" },
-            { text: "DEMO", url: "#" }
+            { text: "LIVE DEMO", url: "#" }
         ]
     }
     
