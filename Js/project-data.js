@@ -211,12 +211,12 @@ const projectData = {
         details: [
             { title: "LANGUAGE", content: "C# / Unity" },
             { title: "ALGORITHMS", content: "DFS, Kruskal, Prim's, Cellular Automata, Perlin Noise" },
-            { title: "DURATION", content: "3 Weeks" },
+            //{ title: "DURATION", content: "#" },
             { title: "CHALLENGE", content: "Multi-Algorithm Integration & AI Difficulty Scaling" }
         ],
         links: [
-            { text: "VIEW CODE", url: "#" },
-            { text: "LIVE DEMO", url: "#" }
+            //{ text: "VIEW CODE", url: "#" },
+            //{ text: "LIVE DEMO", url: "#" }
         ]
     },
 
