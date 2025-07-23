@@ -79,8 +79,8 @@ const projectData = {
             { title: "MY ROLE", content: "Team Lead, Combat Programmer" }
         ],
         links: [
-            { text: "PLAY DEMO", url: "#" }, // Replace with actual URL if available
-            { text: "VIEW SOURCE", url: "https://github.com/HugoEck/Chained-2-Violence" } // Replace with actual GitHub URL
+            { text: "Check it Out", url: "https://store.steampowered.com/app/3307300/Chained_2_Violence/" } // Replace with actual URL if available
+            //{ text: "VIEW SOURCE", url: "https://github.com/HugoEck/Chained-2-Violence" } // Replace with actual GitHub URL
         ]
     },
     // Game 2
