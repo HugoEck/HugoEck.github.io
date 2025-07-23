@@ -139,9 +139,9 @@ const projectData = {
         <p>This project demonstrates mastery of multiple procedural generation paradigms, from graph-based algorithms to noise functions and cellular automation, showcasing the versatility and power of algorithmic content creation.</p>
     `,
         images: [
-            'Images/maze-generation.jpg',
-            'Images/cave-system.jpg',
-            'Images/terrain-generation.jpg'
+            'Images/MayzLogo.jpg',
+            'Images/Kruskal.jpg',
+            'Images/cellular_automata.jpg'
         ],
         videos: [],
         details: [
