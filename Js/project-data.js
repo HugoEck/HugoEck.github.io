@@ -68,7 +68,7 @@ const projectData = {
             // Add videos if you have them
             {
                 title: 'Gameplay Demo',
-                url: 'https://www.youtube.com/watch?v=EhS2IWsT0LY' // Replace with actual video URL or remove if no video
+                url: 'Images/C2V-Trailer-V1.mp4' // Replace with actual video URL or remove if no video
             }
         ],
         details: [
