@@ -116,7 +116,7 @@ const projectData = {
             { text: "VIEW SOURCE", url: "#" }
         ]
     },
-    
+
     // Technical Projects
     'pcg-project': {
         title: 'Procedural Content Generation Suite',
@@ -129,8 +129,12 @@ const projectData = {
         <p>Features three classic maze generation algorithms (Depth-First Search, Kruskal's, and Prim's) with an intelligent AI system that dynamically adjusts maze difficulty by randomly opening or closing dead ends. Includes configurable maze dimensions for scalable generation.</p>
         
         <br>
-        <h3>Cave System Generator using Cellular Automata</h3>
-        <p>Utilizes cellular automata algorithms to procedurally generate realistic 2D cave networks with organic, naturally-flowing formations through iterative rule-based evolution.</p>
+        <h3>Cave System Generator</h3>
+        <p>Implemented a cellular automata algorithm to procedurally generate organic 2D cave systems with natural, flowing formations. The system begins with a randomly seeded grid based on configurable fill probability, then applies iterative smoothing rules over multiple generations.</p>
+        
+        <p>The algorithm analyzes each cell's 8-directional neighbors, applying conditional rules: walls survive with 4+ neighboring walls, while empty spaces become walls when surrounded by 5+ neighbors. This creates realistic cave-like structures through emergent behavior, with parameters for dungeon dimensions (up to 50x50), initial wall density, and iteration count for fine-tuning cave complexity.</p>
+        
+        <p>Features real-time visualization through Unity's tile instantiation system, automatically generating explorable cave networks with organic branching passages and natural chamber formations.</p>
         
         <br>
         <h3>3D Terrain Generation using Perlin Noise</h3>
@@ -155,6 +159,6 @@ const projectData = {
             { text: "LIVE DEMO", url: "#" }
         ]
     }
-    
+
     // Add more projects as needed
 };
