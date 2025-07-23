@@ -159,8 +159,7 @@ const projectData = {
     <p>The resulting MIDI parser system enables infinite content expansion where any MIDI file becomes a playable level, demonstrating scalable architecture through modular parsing components, robust timing systems that handle various musical tempos and time signatures, adaptive visual systems that work with any musical range, and efficient memory usage for large musical files. This system showcases my approach to audio programming with emphasis on precision timing, algorithmic problem-solving, and Unity's coroutine-based architecture for complex sequential operations.</p>
 `,
         images: [
-            'images/tronbone1.jpg',
-            'images/tronbone2.jpg',
+            'Images/tronbone.gif'
             // Add gameplay screenshots showing notes spawning
         ],
         videos: [],
@@ -172,8 +171,8 @@ const projectData = {
             { title: "MY ROLE", content: "MIDI Parser Developer" }
         ],
         links: [
-            { text: "PLAY DEMO", url: "#" },
-            { text: "VIEW SOURCE", url: "#" }
+            { text: "PLAY ON ITCH", url: "https://viggegee.itch.io/tronbone-champ" }
+            //{ text: "VIEW SOURCE", url: "#" }
         ]
     },
 
