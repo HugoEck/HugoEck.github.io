@@ -85,31 +85,91 @@ const projectData = {
     },
     // Game 2
     'game2': {
-        title: 'Game Title 2',
-        subtitle: 'Brief Game Description',
+        title: 'Tronbone Champ',
+        subtitle: 'Rhythm Game with Dynamic MIDI Integration',
         description: `
-            <p>Replace this with a detailed description of your second game project. Include information about the concept, gameplay mechanics, technical challenges, and your specific contributions.</p>
-            
-            <p>This section supports HTML formatting, so you can use:</p>
-            <ul>
-                <li>Bullet points for key features</li>
-                <li>Multiple paragraphs for detailed explanations</li>
-                <li>Formatting like <strong>bold text</strong> for emphasis</li>
-            </ul>
-            
-            <p>Explain what made this project unique and what you learned from working on it.</p>
-        `,
+    <p>
+        Tronbone Champ is a Unity-based rhythm game inspired by the original Trombone Champ, featuring a custom MIDI parser that enables players to play along with any MIDI file. 
+        The game transforms musical data into interactive gameplay elements, creating infinite content possibilities through dynamic song generation from standard MIDI files.
+    </p>
+    <br>
+    <h3>My Part</h3>
+    <p>
+        I developed the complete MIDI parsing and note generation system that serves as the game's content pipeline. Using the DryWetMidi library, I created a comprehensive parser that converts any MIDI file into playable game content through intelligent note selection, precise timing coordination, and adaptive visual positioning.
+    </p>
+    
+    <p>The core parsing method processes MIDI data and orchestrates the entire note spawning pipeline:</p>
+    
+    <pre><code>private void ParseMidiAndSpawnNotes(byte[] midiBytes)
+{
+    using (MemoryStream midiStream = new MemoryStream(midiBytes))
+    {
+        var midiFile = MidiFile.Read(midiStream);
+        var tempoMap = midiFile.GetTempoMap();
+        var notes = midiFile.GetNotes().ToList();
+
+        // Calculate dynamic range for visual positioning
+        minNoteInSong = notes.Min(note => note.NoteNumber);
+        maxNoteInSong = notes.Max(note => note.NoteNumber);
+
+        var notesGroupedByTime = notes.GroupBy(note => note.Time).ToList();
+        // Process groups with difficulty-based skipping...
+    }
+}</code></pre>
+    
+    <p>This approach ensures efficient memory usage while extracting all necessary musical data for gameplay conversion.</p>
+    <br>
+
+    <p><strong style="color: #f08f75;">Intelligent Note Selection</strong></p>
+    <p>Since MIDI files often contain complex chords and multiple simultaneous notes, I implemented a smart grouping system that clusters notes by timestamp and selects the middle note from each group. This creates clean, playable single-note sequences while preserving the musical essence of the original composition. The selection algorithm ensures optimal gameplay flow by focusing on melodically significant notes rather than overwhelming players with chord complexity.</p>
+    <br>
+
+    <p><strong style="color: #f08f75;">Dynamic Difficulty System</strong></p>
+    <p>I designed a configurable skip interval mechanism that allows players to adjust difficulty by controlling note density. The system processes note groups and selectively spawns based on the skip interval, making songs accessible to different skill levels. This creates multiple difficulty variants from a single MIDI file without requiring separate arrangements.</p>
+    <br>
+
+    <p><strong style="color: #f08f75;">Precision Timing Coordination</strong></p>
+    <p>The most complex aspect involved converting MIDI temporal data to Unity's real-time system while ensuring perfect audio-visual synchronization. I implemented a multi-layered timing system that accounts for screen travel time, audio playback delays, and Unity's coroutine scheduling to create frame-perfect note spawning that aligns with audio playback.</p>
+    <br>
+
+    <p><strong style="color: #f08f75;">Adaptive Visual Positioning</strong></p>
+    <p>To ensure optimal screen utilization regardless of a song's musical range, I created a dynamic mapping system that analyzes each MIDI file's pitch range and scales note positions accordingly:</p>
+
+    <pre><code>private float CalculateYOffset(int noteNumber)
+{
+    return Mathf.Lerp(normalizedMinY, normalizedMaxY, 
+        (noteNumber - minNoteInSong) / (maxNoteInSong - minNoteInSong));
+}</code></pre>
+
+    <p>This ensures that whether playing a bass-heavy track or a high-pitched melody, notes utilize the full screen space effectively.</p>
+    <br>
+
+    <p>The system was developed through an iterative approach, beginning with basic MIDI file reading and data extraction, followed by implementation of note grouping and selection algorithms, timing system development and audio synchronization, visual positioning and screen mapping integration, and finally difficulty scaling and performance optimization.</p>
+    <br>
+
+    <p><strong style="color: #f08f75;">Technical Challenges & Solutions</strong></p>
+    
+    <p><strong>Timing Synchronization:</strong> Achieving perfect synchronization between visual note spawning and audio playback required careful calibration. I solved this by implementing a pre-calculated delay system that accounts for screen travel time and audio buffer delays, ensuring notes reach the interaction point precisely when the corresponding audio plays.</p>
+
+    <p><strong>Memory Management:</strong> Large MIDI files could cause memory spikes during parsing. I implemented streaming-based processing using MemoryStream operations and efficient LINQ queries to minimize memory footprint while maintaining parsing performance.</p>
+
+    <p><strong>Musical Complexity Reduction:</strong> Converting complex musical arrangements into playable single-note sequences required intelligent decision-making. I developed algorithms that identify melodically important notes within chord structures, preserving musical intent while maintaining gameplay clarity.</p>
+    <br>
+
+    <p>The resulting MIDI parser system enables infinite content expansion where any MIDI file becomes a playable level, demonstrating scalable architecture through modular parsing components, robust timing systems that handle various musical tempos and time signatures, adaptive visual systems that work with any musical range, and efficient memory usage for large musical files. This system showcases my approach to audio programming with emphasis on precision timing, algorithmic problem-solving, and Unity's coroutine-based architecture for complex sequential operations.</p>
+`,
         images: [
-            'images/project2.jpg',
-            // Add more screenshots here
+            'images/tronbone1.jpg',
+            'images/tronbone2.jpg',
+            // Add gameplay screenshots showing notes spawning
         ],
         videos: [],
         details: [
-            { title: "ENGINE", content: "Unity/Unreal" },
-            { title: "GENRE", content: "Genre" },
+            { title: "ENGINE", content: "Unity" },
+            { title: "GENRE", content: "Rhythm/Music" },
             { title: "TEAM SIZE", content: "X People" },
             { title: "DURATION", content: "X Weeks" },
-            { title: "MY ROLE", content: "Your Role" }
+            { title: "MY ROLE", content: "MIDI Parser Developer" }
         ],
         links: [
             { text: "PLAY DEMO", url: "#" },
