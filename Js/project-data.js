@@ -68,7 +68,7 @@ const projectData = {
             // Add videos if you have them
             {
                 title: 'Gameplay Demo',
-                url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' // Replace with actual video URL or remove if no video
+                url: 'https://www.youtube.com/watch?v=EhS2IWsT0LY' // Replace with actual video URL or remove if no video
             }
         ],
         details: [
@@ -182,6 +182,78 @@ const projectData = {
     
     <p>This project demonstrates mastery of core physics programming concepts, from fundamental force calculations to complex collision mathematics, showcasing the essential components required for any physics simulation system.</p>
     `,
+        images: [
+            'Images/circle_collide.gif',
+            'Images/forces.gif'
+        ],
+        videos: [],
+        details: [
+            { title: "LANGUAGE", content: "C# / Unity" },
+            { title: "FEATURES", content: "Force Management, Time Integration, 2D Collisions" },
+            { title: "DURATION", content: "School Project" },
+            { title: "CHALLENGE", content: "Building Physics from Scratch" }
+        ],
+        links: [
+            { text: "VIEW CODE", url: "#" },
+            { text: "LIVE DEMO", url: "#" }
+        ]
+    },
+
+    'custom-vector': {
+        title: 'Custom STL-Compatible Vector Implementation in C++',
+        subtitle: 'Custom STL-Compatible Vector Implementation in C++',
+        description: `
+    <p>
+        I developed a from-scratch implementation of a dynamic array container that mirrors std::vector functionality. 
+        Built in C++ using advanced template programming and custom memory management, this project demonstrates my mastery of 
+        systems-level programming concepts essential for high-performance applications.
+    </p>
+    <br>
+    <h3>My Part</h3>
+    <p>
+        I built the entire vector implementation using modern C++ principles, focusing on creating an STL-compatible interface 
+        that allows drop-in replacement of std::vector in existing codebases. The implementation follows established C++ best 
+        practices for container design and includes a complete iterator interface that supports STL algorithms and operations.
+    </p>
+    
+    <p>At the core of the implementation is proper memory management with RAII principles:</p>
+    
+    <pre><code>Vector(const Vector& other) {
+    size_ = other.size_;
+    capacity_ = other.capacity_;
+    data_ = _dAlloc.allocate(capacity_);
+    
+    for (size_t i = 0; i < size_; ++i) {
+        new (&data_[i]) T(other.data_[i]);
+    }
+}</code></pre>
+    
+    <p>This approach ensures automatic resource management and exception safety throughout the implementation.</p>
+    <br>
+
+    <p><strong style="color: #f08f75;">Memory Management & Performance</strong></p>
+    <p>I integrated a custom memory allocator (Dalloc) with RAII principles for automatic resource management and exception safety. I designed capacity management with exponential growth strategy to minimize reallocations during resizing. I implemented move semantics following C++11/14 standards to optimize performance during object transfers, with exception safety and invariant checking built into the codebase.</p>
+    <br>
+
+    <p><strong style="color: #f08f75;">Iterator Design</strong></p>
+    <p>I created forward, const, reverse, and const-reverse iterators that comply with STL standards. I implemented all iterators as random access with operator overloading, proper iterator traits, and category definitions for compatibility with standard library algorithms. My iterator design follows established patterns and maintains const-correctness across all variants.</p>
+    <br>
+
+    <p><strong style="color: #f08f75;">API Design</strong></p>
+    <p>I implemented constructors for default initialization, copy construction, move construction, and C-string conversion. I provided element access through both unchecked indexing via operator[] for performance and bounds-checked access through at() for safety. I designed comparison operators with lexicographical ordering and maintained exception safety throughout the interface.</p>
+    <br>
+
+    <p><strong style="color: #f08f75;">Technical Challenges & Solutions</strong></p>
+    
+    <p><strong>Memory Management:</strong> Ensuring proper construction and destruction of objects in manually managed memory required careful use of placement new and explicit destructor calls, maintaining object lifetimes correctly throughout all operations.</p>
+
+    <p><strong>Exception Safety:</strong> Providing strong exception safety guarantees during operations like copy assignment and resize required implementing proper cleanup mechanisms and using RAII principles to prevent resource leaks.</p>
+
+    <p><strong>Iterator Correctness:</strong> Implementing a complete set of STL-compatible iterators with proper random access semantics required careful attention to operator overloading, const-correctness, and maintaining iterator validity during container modifications.</p>
+    <br>
+
+    <p>The resulting vector implementation provides a complete STL-compatible container while demonstrating advanced C++ concepts including template programming, custom memory management, move semantics, and iterator design. This project showcases my understanding of systems-level programming, memory management, and the principles underlying high-performance C++ libraries.</p>
+`,
         images: [
             'Images/circle_collide.gif',
             'Images/forces.gif'
