@@ -73,9 +73,9 @@ const projectData = {
         ],
         details: [
             { title: "ENGINE", content: "Unity" },
-            { title: "GENRE", content: "Co-op Action" },
-            { title: "TEAM SIZE", content: "5 People" },
-            { title: "DURATION", content: "10 Weeks" },
+            { title: "GENRE", content: "Co-op Arena Survival" },
+            { title: "TEAM SIZE", content: "8 People" },
+            { title: "DURATION", content: "20 Weeks" },
             { title: "MY ROLE", content: "Team Lead, Combat Programmer" }
         ],
         links: [
@@ -122,7 +122,7 @@ const projectData = {
         title: 'Procedural Content Generation Suite',
         subtitle: 'Multi-Algorithm Content Generation System',
         description: `
-        <p>A comprehensive procedural generation toolkit implementing three distinct content generation systems, each showcasing different algorithmic approaches to automated content creation.</p>
+        <p>A procedural generation toolkit implementing three distinct content generation systems, each showcasing different algorithmic approaches to automated content creation.</p>
         
         <br>
         <h3>Maze Generation System</h3>
