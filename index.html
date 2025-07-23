@@ -60,9 +60,9 @@
                         I am a 30 year old game programmer that's currently on my third year of studies on the Game Development-program in Malmö University.
                     </p>
                     <p>
-                        I’m a passionate problem-solver driven by curiosity and a hunger for growth. My craft is designing games that deliver seamless, 
-                        immersive experiences, powered by clean, maintainable code that speaks clarity. I embrace challenges as opportunities to learn more, 
-                        and while my stubbornness fuels me to push boundaries, it’s also taught me the value of stepping back to reframe problems with fresh eyes. 
+                        I’m a passionate problem-solver driven by curiosity and a hunger for growth. My craft is designing games that deliver seamless,
+                        immersive experiences, powered by clean, maintainable code that speaks clarity. I embrace challenges as opportunities to learn more,
+                        and while my stubbornness fuels me to push boundaries, it’s also taught me the value of stepping back to reframe problems with fresh eyes.
                         To me, the pursuit of good solutions isn’t just a skill, it’s a mindset.
                     </p>
                     <p>
@@ -84,7 +84,7 @@
                     <div class="project-info">
                         <h3>Chained-2-Violence</h3>
                         <p>
-                            This project is a 2 player co-op game. I was the group leader of this project and developed the combat/ability-system. 
+                            This project is a 2 player co-op game. I was the group leader of this project and developed the combat/ability-system.
                         </p>
                         <div class="project-tags">
                             <span class="tag tag-engine">
@@ -171,26 +171,25 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Technical Project 1 -->
-            <div class="project-card" data-project="custom-vector">
-                <div class="project-image">
-                    <img src="Images/custom_vector.jpg" alt="Technical Project 1" onerror="this.src='https://via.placeholder.com/800x600?text=Technical+Project';this.onerror='';">
-                </div>
-                <div class="project-info">
-                    <h3>2D Physics Engine</h3>
-                    <p>
-                        A from-scratch implementation of std::vector in C++ for my advanced programming course.
-                        This included complete memory management, move semantics, full iterator support, and STL compatibility.
-                        Demonstrates mastery of template programming, RAII principles, and modern C++ best practices.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag"><i class="fas fa-code"></i> LANGUAGE</span>
-                        <span class="tag"><i class="fas fa-microchip"></i> TECHNOLOGY</span>
+                <!-- Technical Project 1 -->
+                <div class="project-card" data-project="custom-vector">
+                    <div class="project-image">
+                        <img src="Images/custom_vector.jpg" alt="Technical Project 1" onerror="this.src='https://via.placeholder.com/800x600?text=Technical+Project';this.onerror='';">
+                    </div>
+                    <div class="project-info">
+                        <h3>Custom Vector Implementation in C++</h3>
+                        <p>
+                            A from-scratch implementation of std::vector in C++ for my advanced programming course.
+                            This included complete memory management, move semantics, full iterator support, and STL compatibility.
+                            Demonstrates mastery of template programming, RAII principles, and modern C++ best practices.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag"><i class="fas fa-code"></i> LANGUAGE</span>
+                            <span class="tag"><i class="fas fa-microchip"></i> TECHNOLOGY</span>
+                        </div>
                     </div>
                 </div>
-            </div>
 
         </section>
 
@@ -294,44 +293,44 @@
     <script src="Js/main.js"></script>
     <script src="Js/lightbox.js"></script>
 
-<!-- Add this at the bottom of your index.html before the closing body tag -->
-<script>
-    console.log('Diagnostic script loaded');
-    
-    // Check if modal functions exist
-    document.addEventListener('DOMContentLoaded', function() {
-      console.log('Project data exists?', typeof projectData !== 'undefined');
-      console.log('openProjectModal exists?', typeof openProjectModal === 'function');
-      
-      // Check project cards
-      const cards = document.querySelectorAll('.project-card, .featured-project-card');
-      console.log('Found project cards:', cards.length);
-      
-      // Add direct click handlers as a backup
-      cards.forEach(card => {
-        card.addEventListener('click', function() {
-          console.log('Card clicked');
-          const projectId = this.getAttribute('data-project');
-          console.log('Project ID:', projectId);
-          
-          if (typeof openProjectModal === 'function') {
-            console.log('Calling openProjectModal');
-            openProjectModal(projectId);
-          } else {
-            console.error('openProjectModal function not found');
-            
-            // Show modal directly as fallback
-            const modal = document.getElementById('projectModal');
-            const modalContent = document.getElementById('modalContent');
-            
-            if (modal && modalContent) {
-              modalContent.innerHTML = `<h2>Project: ${projectId}</h2><p>Modal function not found.</p>`;
-              modal.style.display = 'block';
-            }
-          }
+    <!-- Add this at the bottom of your index.html before the closing body tag -->
+    <script>
+        console.log('Diagnostic script loaded');
+
+        // Check if modal functions exist
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('Project data exists?', typeof projectData !== 'undefined');
+            console.log('openProjectModal exists?', typeof openProjectModal === 'function');
+
+            // Check project cards
+            const cards = document.querySelectorAll('.project-card, .featured-project-card');
+            console.log('Found project cards:', cards.length);
+
+            // Add direct click handlers as a backup
+            cards.forEach(card => {
+                card.addEventListener('click', function () {
+                    console.log('Card clicked');
+                    const projectId = this.getAttribute('data-project');
+                    console.log('Project ID:', projectId);
+
+                    if (typeof openProjectModal === 'function') {
+                        console.log('Calling openProjectModal');
+                        openProjectModal(projectId);
+                    } else {
+                        console.error('openProjectModal function not found');
+
+                        // Show modal directly as fallback
+                        const modal = document.getElementById('projectModal');
+                        const modalContent = document.getElementById('modalContent');
+
+                        if (modal && modalContent) {
+                            modalContent.innerHTML = `<h2>Project: ${projectId}</h2><p>Modal function not found.</p>`;
+                            modal.style.display = 'block';
+                        }
+                    }
+                });
+            });
         });
-      });
-    });
-  </script>
+    </script>
 </body>
 </html>
