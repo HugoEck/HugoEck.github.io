@@ -83,6 +83,7 @@ const projectData = {
             //{ text: "VIEW SOURCE", url: "https://github.com/HugoEck/Chained-2-Violence" } // Replace with actual GitHub URL
         ]
     },
+
     // Game 2
     'game2': {
         title: 'Tronbone Champ',
@@ -166,9 +167,9 @@ const projectData = {
         details: [
             { title: "ENGINE", content: "Unity" },
             { title: "GENRE", content: "Rhythm/Music" },
-            { title: "TEAM SIZE", content: "X People" },
-            { title: "DURATION", content: "X Weeks" },
-            { title: "MY ROLE", content: "MIDI Parser Developer" }
+            { title: "TEAM SIZE", content: "4 People" },
+            { title: "DURATION", content: "2 Weeks" },
+            { title: "MY ROLE", content: "Game Systems Developer" }
         ],
         links: [
             { text: "PLAY ON ITCH", url: "https://viggegee.itch.io/tronbone-champ" }
