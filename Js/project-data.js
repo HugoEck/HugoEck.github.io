@@ -14,7 +14,7 @@ const projectData = {
                 Chained-2-Violence is a cooperative combat game where players are physically chained together while fighting through waves of enemies.
                 Built in Unity using C#, the game features a diverse range of combat abilities including projectile attacks, area-of-effect abilities, defensive shields, and unique cooperative mechanics that leverage the core chained-character concept.
             </p>
-            <br></br>
+            <br>
             <h3>My Part</h3>
             <p>
                 I developed a modular and extensible ability system using a clean interface-based architecture that follows the Command Pattern, allowing for:
