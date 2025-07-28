@@ -868,3 +868,52 @@ footer::before {
     max-width: 100%;
     height: auto;
 }
+
+/* Fix for video hover effects - Add this to your CSS */
+
+/* Force videos to always be fully visible */
+.video-container video {
+    opacity: 1 !important;
+    background: var(--dark) !important;
+    transform: none !important;
+    transition: none !important;
+}
+
+/* Remove ALL hover effects from videos */
+.video-container:hover video {
+    opacity: 1 !important;
+    background: var(--dark) !important;
+    transform: none !important;
+    filter: none !important;
+}
+
+/* Remove hover effects from video container */
+.video-container:hover {
+    opacity: 1 !important;
+    background: var(--dark) !important;
+    transform: none !important;
+    filter: none !important;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Ensure no other elements are affecting video visibility */
+.video-item:hover,
+.video-item:hover video,
+.video-item:hover .video-container {
+    opacity: 1 !important;
+    background: var(--dark) !important;
+    transform: none !important;
+    filter: none !important;
+}
+
+/* Remove any inherited hover effects */
+.project-videos *:hover,
+.media-content *:hover {
+    opacity: 1 !important;
+}
+
+/* Make sure video controls are always visible */
+.video-container video::-webkit-media-controls,
+.video-container video::-webkit-media-controls-panel {
+    opacity: 1 !important;
+}
