@@ -67,8 +67,9 @@ const projectData = {
         videos: [
             // Add videos if you have them
 
-            /*title: 'Gameplay Demo',*/
+            title: 'Game Trailer',
             'Images/C2V-Trailer-V1.mp4',
+            title: 'Class Abilities in the lobby',
             'Images/classAbilities.mp4'// Replace with actual video URL or remove if no video
 
         ],

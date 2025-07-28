@@ -38,7 +38,7 @@ function openProjectModal(projectId) {
             { text: "VIEW SOURCE", url: "#" }
         ]
     };
-    
+
     // Create gallery items HTML
     let galleryHTML = '';
     if (project.images && project.images.length > 0) {
@@ -59,32 +59,61 @@ function openProjectModal(projectId) {
             </div>
         `;
     }
-    
-    // Create video items HTML
+
+    // Create video items HTML - FIXED TO HANDLE LOCAL MP4 FILES
     let videoHTML = '';
     if (project.videos && project.videos.length > 0) {
-        project.videos.forEach(video => {
-            videoHTML += `
-                <div class="video-item">
-                    <h4>${video.title}</h4>
-                    <div class="video-container">
-                        <iframe 
-                            width="100%" 
-                            height="315" 
-                            src="${video.url}" 
-                            title="${video.title}"
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
+        project.videos.forEach((video, index) => {
+            // Check if video is a string (file path) or object (with title/url)
+            if (typeof video === 'string') {
+                // Handle local MP4 files
+                const videoName = video.split('/').pop().split('.')[0]; // Extract filename without extension
+                const displayName = videoName.replace(/[-_]/g, ' ').replace(/\b\w/g, l => l.toUpperCase()); // Make it readable
+
+                videoHTML += `
+                    <div class="video-item">
+                        <h4>${displayName}</h4>
+                        <div class="video-container">
+                            <video 
+                                controls 
+                                preload="metadata" 
+                                style="width: 100%; max-width: 800px; height: auto; border-radius: 8px;"
+                                onloadstart="console.log('Video loading: ${video}')"
+                                onerror="console.error('Video failed to load: ${video}'); this.parentElement.innerHTML='<div class=video-error>Video could not be loaded: ${video}</div>'"
+                                oncanplay="console.log('Video ready: ${video}')">
+                                <source src="${video}" type="video/mp4">
+                                <p>Your browser doesn't support video playback. <a href="${video}" target="_blank">Download video</a></p>
+                            </video>
+                            <div class="video-debug" style="font-size: 12px; color: #666; margin-top: 5px; font-family: monospace;">
+                                Path: ${video}
+                            </div>
+                        </div>
                     </div>
-                </div>
-            `;
+                `;
+            } else if (video.url && video.title) {
+                // Handle embedded videos (YouTube/Vimeo)
+                videoHTML += `
+                    <div class="video-item">
+                        <h4>${video.title}</h4>
+                        <div class="video-container">
+                            <iframe 
+                                width="100%" 
+                                height="315" 
+                                src="${video.url}" 
+                                title="${video.title}"
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                `;
+            }
         });
     } else {
         videoHTML = '<p>No videos available for this project.</p>';
     }
-    
+
     // Create details HTML
     let detailsHTML = '';
     if (project.details && project.details.length > 0) {
@@ -97,7 +126,7 @@ function openProjectModal(projectId) {
             `;
         });
     }
-    
+
     // Create links HTML
     let linksHTML = '';
     if (project.links && project.links.length > 0) {
@@ -107,7 +136,7 @@ function openProjectModal(projectId) {
             `;
         });
     }
-    
+
     // Populate modal
     modalContent.innerHTML = `
         <div class="modal-header">
@@ -137,40 +166,64 @@ function openProjectModal(projectId) {
             <div class="project-links">${linksHTML}</div>
         </div>
     `;
-    
+
     // Show and animate modal
     modal.style.display = 'block';
     document.body.style.overflow = 'hidden'; // Prevent scrolling behind modal
-    
+
     // Trigger animation
     setTimeout(() => {
         modal.classList.add('active');
     }, 10);
-    
+
     // Add tab switching functionality
     const tabs = document.querySelectorAll('.media-tab');
     const contents = document.querySelectorAll('.media-content');
-    
+
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
             // Remove active class from all tabs and contents
             tabs.forEach(t => t.classList.remove('active'));
             contents.forEach(c => c.classList.remove('active'));
-            
+
             // Add active class to clicked tab
             tab.classList.add('active');
-            
+
             // Show corresponding content
             const tabName = tab.getAttribute('data-tab');
             document.getElementById(`${tabName}-content`).classList.add('active');
         });
     });
+
+    // Log debugging info for videos
+    console.log('Project videos:', project.videos);
+
+    // Test video accessibility after modal loads
+    if (project.videos && project.videos.length > 0) {
+        setTimeout(() => {
+            project.videos.forEach(video => {
+                if (typeof video === 'string') {
+                    fetch(video, { method: 'HEAD' })
+                        .then(response => {
+                            if (response.ok) {
+                                console.log(`? Video accessible: ${video}`);
+                            } else {
+                                console.error(`? Video not accessible: ${video} (Status: ${response.status})`);
+                            }
+                        })
+                        .catch(error => {
+                            console.error(`? Error testing video: ${video}`, error);
+                        });
+                }
+            });
+        }, 100);
+    }
 }
 
 // Close Modal with animation
 closeModal.addEventListener('click', () => {
     modal.classList.remove('active');
-    
+
     // Wait for animation to complete before hiding
     setTimeout(() => {
         modal.style.display = 'none';
@@ -182,7 +235,7 @@ closeModal.addEventListener('click', () => {
 window.addEventListener('click', (e) => {
     if (e.target === modal) {
         modal.classList.remove('active');
-        
+
         setTimeout(() => {
             modal.style.display = 'none';
             document.body.style.overflow = 'auto';
