@@ -59,17 +59,18 @@ const projectData = {
             <p>The resulting ability system provides players with diverse combat options while maintaining code quality through high cohesion within each ability class, low coupling between system components, extensive configurability through Unity's Inspector, and a scalable architecture for adding new abilities. This system demonstrates my approach to game systems programming with a focus on maintainable code, gameplay-driven design, and effective use of Unity's physics and rendering capabilities.</p>
         `,
         images: [
-            'Images/c2v.jpg',
+            'Images/c2v.jpg'
             // Add more screenshots here - use actual paths to your images
             // 'images/c2v-screenshot2.jpg',
             // 'images/c2v-screenshot3.jpg'
         ],
         videos: [
             // Add videos if you have them
-            {
-                title: 'Gameplay Demo',
-                url: 'Images/C2V-Trailer-V1.mp4' // Replace with actual video URL or remove if no video
-            }
+
+            /*title: 'Gameplay Demo',*/
+            'Images/C2V-Trailer-V1.mp4',
+            'Images/classAbilities.mp4'// Replace with actual video URL or remove if no video
+
         ],
         details: [
             { title: "ENGINE", content: "Unity" },
