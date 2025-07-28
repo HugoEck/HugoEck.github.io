@@ -205,7 +205,8 @@ const projectData = {
         images: [
             'Images/MayzLogo.jpg',
             'Images/Kruskal.jpg',
-            'Images/cellular_automata.jpg'
+            'Images/cellular_automata.jpg',
+            'Images/PerlinNoise.jpg'
         ],
         videos: [],
         details: [
