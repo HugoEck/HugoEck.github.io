@@ -675,7 +675,7 @@ footer::before {
     display: inline-block;
 }
 
-/* ===== VIDEO MODAL STYLES ===== */
+/* ===== VIDEO MODAL STYLES - UPDATED ===== */
 
 /* Video styling for modal */
 .video-item {
@@ -697,12 +697,7 @@ footer::before {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-}
-
-.video-container:hover {
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-    transform: translateY(-2px);
+    /* Removed hover effects */
 }
 
 .video-container video {
@@ -712,6 +707,7 @@ footer::before {
     display: block;
     background: var(--dark);
     border-radius: 8px;
+    /* Removed all animations and hover effects */
 }
 
 .video-error {
@@ -794,21 +790,6 @@ footer::before {
     animation: fadeIn 0.3s ease-in;
 }
 
-/* Video loading state */
-.video-container video:not([src]) {
-    background: linear-gradient(45deg, var(--dark), var(--medium));
-    min-height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.video-container video:not([src])::after {
-    content: 'Loading video...';
-    color: var(--text);
-    font-family: 'Roboto', sans-serif;
-}
-
 /* Responsive video handling */
 @media (max-width: 768px) {
     .video-container video {
@@ -871,27 +852,6 @@ footer::before {
 .video-container video::-webkit-media-controls-time-remaining-display {
     color: var(--text);
     font-family: 'Roboto', sans-serif;
-}
-
-/* Loading animation for videos */
-@keyframes videoLoad {
-    0% { opacity: 0.5; }
-    50% { opacity: 1; }
-    100% { opacity: 0.5; }
-}
-
-.video-container video[preload="metadata"] {
-    animation: videoLoad 2s infinite ease-in-out;
-}
-
-.video-container video[readyState="4"] {
-    animation: none;
-}
-
-/* Video hover effects */
-.video-container:hover video {
-    transform: scale(1.02);
-    transition: transform 0.3s ease;
 }
 
 /* Ensure videos respect the modal boundaries */

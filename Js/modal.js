@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Modal Functionality
  * Handles opening, closing, and populating project modals
  */
@@ -60,7 +60,7 @@ function openProjectModal(projectId) {
         `;
     }
 
-    // Create video items HTML - FIXED TO HANDLE LOCAL MP4 FILES
+    // Create video items HTML - FIXED: No pulsing, with autoplay
     let videoHTML = '';
     if (project.videos && project.videos.length > 0) {
         project.videos.forEach((video, index) => {
@@ -76,7 +76,10 @@ function openProjectModal(projectId) {
                         <div class="video-container">
                             <video 
                                 controls 
-                                preload="metadata" 
+                                autoplay 
+                                muted 
+                                loop
+                                preload="auto" 
                                 style="width: 100%; max-width: 800px; height: auto; border-radius: 8px;"
                                 onloadstart="console.log('Video loading: ${video}')"
                                 onerror="console.error('Video failed to load: ${video}'); this.parentElement.innerHTML='<div class=video-error>Video could not be loaded: ${video}</div>'"
@@ -206,13 +209,13 @@ function openProjectModal(projectId) {
                     fetch(video, { method: 'HEAD' })
                         .then(response => {
                             if (response.ok) {
-                                console.log(`? Video accessible: ${video}`);
+                                console.log(`✅ Video accessible: ${video}`);
                             } else {
-                                console.error(`? Video not accessible: ${video} (Status: ${response.status})`);
+                                console.error(`❌ Video not accessible: ${video} (Status: ${response.status})`);
                             }
                         })
                         .catch(error => {
-                            console.error(`? Error testing video: ${video}`, error);
+                            console.error(`❌ Error testing video: ${video}`, error);
                         });
                 }
             });
