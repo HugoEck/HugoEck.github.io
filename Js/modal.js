@@ -209,13 +209,13 @@ function openProjectModal(projectId) {
                     fetch(video, { method: 'HEAD' })
                         .then(response => {
                             if (response.ok) {
-                                console.log(`✅ Video accessible: ${video}`);
+                                console.log(`Video accessible: ${video}`);
                             } else {
-                                console.error(`❌ Video not accessible: ${video} (Status: ${response.status})`);
+                                console.error(`Video not accessible: ${video} (Status: ${response.status})`);
                             }
                         })
                         .catch(error => {
-                            console.error(`❌ Error testing video: ${video}`, error);
+                            console.error(`Error testing video: ${video}`, error);
                         });
                 }
             });
